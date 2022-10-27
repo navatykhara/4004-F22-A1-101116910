@@ -23,4 +23,12 @@ public class Hand {
         graveyard = new ArrayList<>();
     }
 
+    public Dice[] getHand(){
+        return hand;
+    }
+    public void setHand(Dice[] hand){
+        this.hand = hand;
+    }
+
+
 }
