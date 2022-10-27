@@ -11,6 +11,7 @@ public class SeaBattle {
         bonus = new HashMap<Integer, Integer>();
 
         bonus.put(2,300);
+        bonus.put(3,500);
 
         swords = i >= 2 && i <= 4 ? i : -1;
 
