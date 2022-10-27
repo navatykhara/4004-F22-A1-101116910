@@ -52,6 +52,11 @@ public enum DiceState {
         public String toString(){
             return "SKULL";
         }
+
+        public char toChar(){
+            return 'X';
+        }
+        
     };
 
     public char toChar() {
