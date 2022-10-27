@@ -5,6 +5,13 @@ public enum DiceState {
         public String toString(){
             return "DIAMOND";
         }
+        public char toChar(){
+            return 'D';
+        }
     };
+
+    public char toChar() {
+        return '*';
+    }
 
 }
