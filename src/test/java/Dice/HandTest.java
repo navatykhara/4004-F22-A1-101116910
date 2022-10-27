@@ -17,5 +17,15 @@ class HandTest {
         assertTrue(true);
     }
 
+    @Test
+    void setHand(){
+        Hand hand = new Hand();
+        Hand compare = new Hand();
+
+        hand.setHand(compare.getHand());
+        assertTrue(hand.getHand().equals(compare.getHand()));
+
+    }
+
 }
 
