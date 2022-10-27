@@ -42,6 +42,10 @@ public enum DiceState {
             return "SWORD";
         }
 
+        public char toChar(){
+            return 'S';
+        }
+
     }
 
 
