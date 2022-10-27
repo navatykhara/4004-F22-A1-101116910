@@ -12,6 +12,7 @@ public class SeaBattle {
 
         bonus.put(2,300);
         bonus.put(3,500);
+        bonus.put(4,1000);
 
         swords = i >= 2 && i <= 4 ? i : -1;
 

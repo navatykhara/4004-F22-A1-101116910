@@ -77,7 +77,7 @@ public class SeaBattleTest {
         SeaBattle sb = new SeaBattle(3);
         assertEquals(sb.getBonus(), 500);
     }
-    
+
     @Test
     void getBonusFour() {
         SeaBattle sb = new SeaBattle(4);
