@@ -11,4 +11,9 @@ class DiceStateTest {
         assertEquals(DiceState.DIAMOND.toString(), "DIAMOND");
     }
 
+    @Test
+    void testDiamondStateChar(){
+        assertEquals(DiceState.DIAMOND.toChar(), 'D');
+    }
+
 }
