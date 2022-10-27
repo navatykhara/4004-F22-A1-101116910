@@ -47,7 +47,6 @@ public class SeaBattleTest {
             if(e.equals(new IllegalArgumentException("Parameter invalid.")))
                 assertTrue(true);
         }
-        assertTrue(false);
     }
 
 }
