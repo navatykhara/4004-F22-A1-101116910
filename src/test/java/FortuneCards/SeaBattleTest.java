@@ -39,4 +39,15 @@ public class SeaBattleTest {
         assertTrue(true);
     }
 
+    @Test
+    void initializeOuterCasePlusOne() {
+        try {
+            SeaBattle sb = new SeaBattle(5);
+        }catch(Exception e){
+            if(e.equals(new IllegalArgumentException("Parameter invalid.")))
+                assertTrue(true);
+        }
+        assertTrue(false);
+    }
+
 }
