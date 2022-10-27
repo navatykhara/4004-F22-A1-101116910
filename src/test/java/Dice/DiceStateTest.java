@@ -56,5 +56,10 @@ class DiceStateTest {
         assertEquals(DiceState.SWORD.toChar(), 'S');
     }
 
+    @Test
+    void testSkullStateString(){
+        assertEquals(DiceState.SKULL.toString(), "SKULL");
+    }
+
 
 }
