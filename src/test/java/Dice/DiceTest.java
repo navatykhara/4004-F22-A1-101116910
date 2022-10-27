@@ -27,5 +27,19 @@ class DiceTest {
 
     }
 
+    @Test
+    void roll() {
+        Dice dice = new Dice();
+        DiceState[] temp = new DiceState[]{DiceState.COIN, DiceState.DIAMOND, DiceState.MONKEY, DiceState.PARROT, DiceState.SWORD, DiceState.SKULL};
+        DiceState rolledDice = dice.roll();
+        for(DiceState d : temp){
+            if(d.toString().equals(rolledDice.toString())) {
+                assertTrue(true);
+                return;
+            }
+        }
+        assertTrue(false);
+    }
+
 
 }
