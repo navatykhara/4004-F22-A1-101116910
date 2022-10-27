@@ -17,6 +17,12 @@ public enum DiceState {
         public char toChar(){
             return 'C';
         }
+    },
+
+    MONKEY{
+        public String toString(){
+            return "MONKEY";
+        }
     }
 
     ;
