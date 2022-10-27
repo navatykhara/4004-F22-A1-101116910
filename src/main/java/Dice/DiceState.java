@@ -30,6 +30,9 @@ public enum DiceState {
         public String toString(){
             return "PARROT";
         }
+        public char toChar(){
+            return 'P';
+        }
     }
 
 
