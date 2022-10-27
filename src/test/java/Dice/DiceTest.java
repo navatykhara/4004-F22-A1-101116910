@@ -17,5 +17,15 @@ class DiceTest {
 
     }
 
+    @Test
+    void getDice() {
+
+        DiceState d = DiceState.PARROT;
+        Dice dice = new Dice();
+        dice.setDice(d);
+        assertEquals(d, dice.getDice());
+
+    }
+
 
 }
