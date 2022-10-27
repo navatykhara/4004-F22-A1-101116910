@@ -56,7 +56,7 @@ public enum DiceState {
         public char toChar(){
             return 'X';
         }
-        
+
     };
 
     public char toChar() {
