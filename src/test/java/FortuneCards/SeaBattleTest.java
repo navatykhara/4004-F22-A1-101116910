@@ -84,4 +84,11 @@ public class SeaBattleTest {
         assertEquals(sb.getBonus(), 1000);
     }
 
+    @Test
+    void testToString() {
+        int swords = 2;
+        SeaBattle sb = new SeaBattle(swords);
+        assertEquals(sb.toString(), "SEA BATTLE");
+    }
+
 }
