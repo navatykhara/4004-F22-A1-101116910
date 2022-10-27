@@ -45,6 +45,6 @@ class DiceStateTest {
     void testParrotStateChar(){
         assertEquals(DiceState.PARROT.toChar(), 'P');
     }
-    
+
 
 }

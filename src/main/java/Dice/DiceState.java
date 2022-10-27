@@ -23,6 +23,9 @@ public enum DiceState {
         public String toString(){
             return "MONKEY";
         }
+        public char toChar(){
+            return 'P';
+        }
     },
 
 
