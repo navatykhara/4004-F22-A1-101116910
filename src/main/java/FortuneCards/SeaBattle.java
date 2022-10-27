@@ -4,9 +4,13 @@ import java.util.HashMap;
 
 public class SeaBattle {
 
-
+    HashMap<Integer, Integer> bonus;
     int swords;
     public SeaBattle(int i){
+
+        bonus = new HashMap<Integer, Integer>();
+
+        bonus.put(2,300);
 
         swords = i >= 2 && i <= 4 ? i : -1;
 
@@ -17,6 +21,10 @@ public class SeaBattle {
 
     public int getSwords(){
         return swords;
+    }
+
+    public int getBonus(){
+        return bonus.get(swords);
     }
 
 }
