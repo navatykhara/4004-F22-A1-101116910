@@ -2,7 +2,7 @@ package FortuneCards;
 
 import java.util.HashMap;
 
-public class SeaBattle {
+public class SeaBattle implements FortuneCards{
 
     HashMap<Integer, Integer> bonus;
     int swords;
