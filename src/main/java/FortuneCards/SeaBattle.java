@@ -28,5 +28,9 @@ public class SeaBattle {
     public int getBonus(){
         return bonus.get(swords);
     }
+    @Override
+    public String toString() {
+        return "SEA BATTLE";
+    }
 
 }
