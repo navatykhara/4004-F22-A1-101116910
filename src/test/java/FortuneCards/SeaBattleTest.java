@@ -58,5 +58,13 @@ public class SeaBattleTest {
                 assertTrue(true);
         }
     }
+
+    @Test
+    void getSword(){
+        int swords = 2;
+        SeaBattle sb = new SeaBattle(swords);
+        assertEquals(sb.getSwords(), swords);
+    }
+
     
 }
