@@ -46,10 +46,13 @@ public enum DiceState {
             return 'S';
         }
 
-    }
+    },
 
-
-    ;
+    SKULL{
+        public String toString(){
+            return "SKULL";
+        }
+    };
 
     public char toChar() {
         return '*';
