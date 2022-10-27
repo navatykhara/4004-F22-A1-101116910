@@ -24,7 +24,7 @@ public enum DiceState {
             return "MONKEY";
         }
         public char toChar(){
-            return 'P';
+            return 'M';
         }
     },
 
