@@ -15,4 +15,8 @@ public class SeaBattle {
         }
     }
 
+    public int getSwords(){
+        return swords;
+    }
+
 }

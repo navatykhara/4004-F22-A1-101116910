@@ -66,5 +66,5 @@ public class SeaBattleTest {
         assertEquals(sb.getSwords(), swords);
     }
 
-    
+
 }
