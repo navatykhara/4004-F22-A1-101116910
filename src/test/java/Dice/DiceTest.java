@@ -1,6 +1,8 @@
 package Dice;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class DiceTest {
 
@@ -12,7 +14,7 @@ class DiceTest {
         Dice dice = new Dice();
         dice.setDice(d);
         assertEquals(d, dice.getDice());
-        
+
     }
 
 
