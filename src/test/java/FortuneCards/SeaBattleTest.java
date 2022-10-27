@@ -28,5 +28,15 @@ public class SeaBattleTest {
         assertTrue(true);
     }
 
+    @Test
+    void initializeEndCase() {
+        try {
+            SeaBattle sb = new SeaBattle(4);
+        }catch(Exception e){
+            if(e.equals(new IllegalArgumentException("Parameter invalid.")))
+                assertTrue(false);
+        }
+        assertTrue(true);
+    }
 
 }
