@@ -51,5 +51,10 @@ class DiceStateTest {
         assertEquals(DiceState.SWORD.toString(), "SWORD");
     }
 
+    @Test
+    void testSwordStateChar(){
+        assertEquals(DiceState.SWORD.toChar(), 'S');
+    }
+
 
 }
