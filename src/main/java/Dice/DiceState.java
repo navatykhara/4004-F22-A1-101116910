@@ -14,7 +14,9 @@ public enum DiceState {
         public String toString(){
             return "COIN";
         }
-
+        public char toChar(){
+            return 'C';
+        }
     }
 
     ;
