@@ -31,5 +31,9 @@ class DiceStateTest {
         assertEquals(DiceState.MONKEY.toString(), "MONKEY");
     }
 
+    @Test
+    void testMonkeyStateChar(){
+        assertEquals(DiceState.MONKEY.toChar(), 'M');
+    }
 
 }
