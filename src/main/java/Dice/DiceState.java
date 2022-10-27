@@ -23,10 +23,15 @@ public enum DiceState {
         public String toString(){
             return "MONKEY";
         }
-        public char toChar(){
-            return 'M';
+    },
+
+
+    PARROT{
+        public String toString(){
+            return "PARROT";
         }
     }
+
 
     ;
 
