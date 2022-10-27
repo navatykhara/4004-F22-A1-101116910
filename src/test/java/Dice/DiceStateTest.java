@@ -26,4 +26,10 @@ class DiceStateTest {
         assertEquals(DiceState.COIN.toChar(), 'C');
     }
 
+    @Test
+    void testMonkeyStateString(){
+        assertEquals(DiceState.MONKEY.toString(), "MONKEY");
+    }
+
+
 }
