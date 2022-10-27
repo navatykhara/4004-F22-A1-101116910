@@ -72,5 +72,11 @@ public class SeaBattleTest {
         assertEquals(sb.getBonus(), 300);
     }
 
+    @Test
+    void getBonusThree() {
+        SeaBattle sb = new SeaBattle(3);
+        assertEquals(sb.getBonus(), 500);
+    }
+
 
 }
