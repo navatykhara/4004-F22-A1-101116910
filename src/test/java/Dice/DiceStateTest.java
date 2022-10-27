@@ -46,5 +46,10 @@ class DiceStateTest {
         assertEquals(DiceState.PARROT.toChar(), 'P');
     }
 
+    @Test
+    void testSwordStateString(){
+        assertEquals(DiceState.SWORD.toString(), "SWORD");
+    }
+
 
 }
