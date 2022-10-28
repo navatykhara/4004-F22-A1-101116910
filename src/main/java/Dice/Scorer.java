@@ -32,6 +32,10 @@ public class Scorer {
 
         for(DiceState d : freq.keySet()){
 
+            if((fortune != null && fortune.getClass().equals(MonkeyBusiness.class)) && (d == DiceState.MONKEY || d == DiceState.PARROT)){
+                continue;
+            }
+
             if(rule.containsKey(freq.get(d))) {
                 total += rule.get(freq.get(d));
                 if(!(d == DiceState.COIN || d == DiceState.DIAMOND)){
@@ -65,6 +69,11 @@ public class Scorer {
                 freq.put(DiceState.COIN, freq.get(DiceState.COIN) != null ? freq.get(DiceState.COIN) + 1 : 1);
             if (fortune.getClass().equals(Diamond.class))
                 freq.put(DiceState.DIAMOND, freq.get(DiceState.DIAMOND) != null ? freq.get(DiceState.DIAMOND) + 1 : 1);
+            if (fortune.getClass().equals(MonkeyBusiness.class)) {
+                int monkey = freq.get(DiceState.MONKEY) != null ? freq.get(DiceState.MONKEY) : 0;
+                int parrot = freq.get(DiceState.PARROT) != null ? freq.get(DiceState.PARROT) : 0;
+                freq.put(DiceState.MONKEYPARROT, monkey + parrot);
+            }
         }
     }
 
