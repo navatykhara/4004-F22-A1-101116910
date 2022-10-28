@@ -1,7 +1,11 @@
 package Game;
 
+import Dice.Hand;
+import FortuneCards.FortuneCards;
+
 public class Player {
 
+    FortuneCards fortune;
     int score;
     int id;
     int total;
@@ -28,5 +32,12 @@ public class Player {
 
     public void setTotal(int i) {
         this.total = i;
+    }
+
+    public void setFortune(FortuneCards f){
+        fortune = f;
+    }
+    public FortuneCards getFortune(){
+        return fortune;
     }
 }
