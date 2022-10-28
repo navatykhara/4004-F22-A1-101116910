@@ -12,4 +12,9 @@ public class Sorceress implements FortuneCards{
         return roll;
     }
 
+    @Override
+    public String toString() {
+        return "SORCERESS";
+    }
+
 }
