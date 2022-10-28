@@ -5,6 +5,7 @@ import FortuneCards.FortuneCards;
 
 public class Player {
 
+    Hand hand;
     FortuneCards fortune;
     int score;
     int id;
@@ -14,6 +15,9 @@ public class Player {
         this.id = i;
         score = 0;
         total =0;
+
+        hand = new Hand();
+        hand.initialize();
     }
 
     public int getScore() {
@@ -40,4 +44,8 @@ public class Player {
     public FortuneCards getFortune(){
         return fortune;
     }
+    public Hand getHand(){
+        return hand;
+    }
+
 }
