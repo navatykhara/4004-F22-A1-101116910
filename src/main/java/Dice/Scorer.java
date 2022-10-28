@@ -1,5 +1,7 @@
 package Dice;
 
+import FortuneCards.SeaBattle;
+
 import java.util.HashMap;
 
 public class Scorer {
@@ -8,8 +10,21 @@ public class Scorer {
 
     public Scorer(){
         freq = new HashMap<>();
+
     }
 
+    public int score(){
+        int total = 0;
+        for(DiceState d : freq.keySet()){
+            
+            if(d == DiceState.COIN || d == DiceState.DIAMOND) {
+                total += 100 * freq.get(d);
+            }
+
+        }
+
+        return  total;
+    }
 
     public void count(Hand hand){
         freq = new HashMap<>();
