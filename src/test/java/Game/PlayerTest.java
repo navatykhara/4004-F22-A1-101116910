@@ -8,13 +8,13 @@ class PlayerTest {
 
     @Test
     void getScore() {
-        Player p = new Player();
+        Player p = new Player(1);
         assertEquals(p.getScore(), 0);
     }
 
     @Test
     void setScore() {
-        Player p = new Player();
+        Player p = new Player(1);
         p.setScore(1);
         assertEquals(p.getScore(), 1);
     }
