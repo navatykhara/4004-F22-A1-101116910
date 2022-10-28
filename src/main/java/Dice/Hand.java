@@ -3,6 +3,7 @@ package Dice;
 import FortuneCards.FortuneCards;
 import FortuneCards.Skulls;
 import FortuneCards.Sorceress;
+import FortuneCards.TreasureChest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -103,5 +104,11 @@ public class Hand {
         cleanUp();
     }
 
+    public Hand getChest(FortuneCards fortune){
+        if(fortune != null && fortune.getClass().equals(TreasureChest.class)){
+            return ((TreasureChest) fortune).getHand();
+        }
+        return null;
+    }
 
 }

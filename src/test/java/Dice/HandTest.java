@@ -430,6 +430,6 @@ class HandTest {
         assertTrue(hand.getChest(new TreasureChest()).getClass().equals(Hand.class));
     }
 
-    
+
 }
 
