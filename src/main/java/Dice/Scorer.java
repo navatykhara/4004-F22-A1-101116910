@@ -18,6 +18,7 @@ public class Scorer {
         rule.put(5, 500);
         rule.put(6, 1000);
         rule.put(7, 2000);
+        rule.put(8, 4000);
 
     }
 
