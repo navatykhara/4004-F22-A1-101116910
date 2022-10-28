@@ -7,17 +7,24 @@ import java.util.HashMap;
 public class Scorer {
 
     HashMap<DiceState, Integer> freq;
+    HashMap<Integer, Integer> rule;
 
     public Scorer(){
         freq = new HashMap<>();
+        rule = new HashMap<>();
 
+        rule.put(3, 100);
     }
 
     public int score(){
         int total = 0;
         for(DiceState d : freq.keySet()){
-            
-            if(d == DiceState.COIN || d == DiceState.DIAMOND) {
+
+            if(rule.containsKey(freq.get(d))) {
+                total += rule.get(freq.get(d));
+            }
+
+            if (d == DiceState.COIN || d == DiceState.DIAMOND) {
                 total += 100 * freq.get(d);
             }
 
