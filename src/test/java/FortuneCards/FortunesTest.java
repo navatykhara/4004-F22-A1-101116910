@@ -78,6 +78,14 @@ public class FortunesTest {
         assertEquals(temp, fortunes.shuffle(temp));
     }
 
+    @Test
+    void getFortuneBaseCase() {
+
+        Fortunes fortune = new Fortunes();
+        fortune.initialize();
+        FortuneCards[] temp = fortune.shuffle();
+        assertEquals(temp[0], fortune.getFortune());
+    }
 
 
 }
