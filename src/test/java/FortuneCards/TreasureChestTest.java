@@ -12,5 +12,9 @@ public class TreasureChestTest {
         TreasureChest tc = new TreasureChest();
         assertEquals(tc.getHand().getClass(), Hand.class);
     }
+    @Override
+    public String toString() {
+        return "TREASURE CHEST";
+    }
 
 }

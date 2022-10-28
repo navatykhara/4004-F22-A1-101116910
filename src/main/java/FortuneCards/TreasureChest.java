@@ -9,5 +9,5 @@ public class TreasureChest implements  FortuneCards{
     public Hand getHand(){
         return chest;
     }
-    
+
 }
