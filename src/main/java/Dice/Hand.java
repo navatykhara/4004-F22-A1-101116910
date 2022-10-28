@@ -30,5 +30,17 @@ public class Hand {
         this.hand = hand;
     }
 
+    public void cleanUp(){
+        for(int i = MAX_DICE-1; i >= 0; i--){
+            if(hand[i] == null) {
+                continue;
+            }else if(hand[i].getDice() == DiceState.SKULL){
+                graveyard.add(hand[i]);
+                hand[i] = null;
+            }else{
+                break;
+            }
+        }
+    }
 
 }
