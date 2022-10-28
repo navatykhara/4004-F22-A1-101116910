@@ -87,5 +87,19 @@ public class FortunesTest {
         assertEquals(temp[0], fortune.getFortune());
     }
 
+    @Test
+    void getFortuneEndCase() {
+
+        Fortunes fortune = new Fortunes();
+
+        fortune.initialize();
+        FortuneCards[] temp = fortune.shuffle();
+
+        for(int i = 0; i < temp.length-1; i++)
+            fortune.getFortune();
+
+        assertEquals(temp[temp.length-1], fortune.getFortune());
+    }
+
 
 }
