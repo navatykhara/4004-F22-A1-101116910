@@ -60,7 +60,7 @@ public enum DiceState {
     },
     MONKEYPARROT{
         public String toString(){ return "MONKEY-PARROT";}
-
+        public char toChar(){ return 'W';}
     };
 
     public char toChar() {
