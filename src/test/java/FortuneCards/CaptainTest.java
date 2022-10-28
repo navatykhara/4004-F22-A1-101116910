@@ -11,5 +11,5 @@ class CaptainTest {
         Captain c = new Captain();
         assertEquals(c.toString(), "CAPTAIN");
     }
-    
+
 }
