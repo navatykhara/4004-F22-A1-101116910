@@ -101,5 +101,19 @@ public class FortunesTest {
         assertEquals(temp[temp.length-1], fortune.getFortune());
     }
 
+    @Test
+    void getFortuneMiddleCase() {
 
+        Fortunes fortune = new Fortunes();
+
+        fortune.initialize();
+        FortuneCards[] temp = fortune.shuffle();
+
+        for(int i = 0; i < (temp.length-1)/2; i++)
+            fortune.getFortune();
+
+        assertEquals(temp[(temp.length-1)/2], fortune.getFortune());
+    }
+
+    
 }
