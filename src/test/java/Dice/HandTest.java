@@ -302,7 +302,6 @@ class HandTest {
         assertEquals(hand.getNumSkulls(new Skulls(1)), 2);
 
     }
-
     @Test
     void getNumSkullsForNonSkullFortunes(){
 
@@ -340,9 +339,8 @@ class HandTest {
         assertEquals(hand.getNumSkulls(new Coin()), 1);
 
     }
-
     @Test
-    void rollSkullsWithoutSorceress(){
+    void rollSkullsWithSorceress(){
         Hand hand = new Hand();
 
         Dice d1 = new Dice();
