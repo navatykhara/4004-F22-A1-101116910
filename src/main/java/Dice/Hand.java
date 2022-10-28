@@ -111,4 +111,24 @@ public class Hand {
         return null;
     }
 
+    public void addToChest(FortuneCards fortune, int[] h){
+
+        if(fortune != null && fortune.getClass().equals(TreasureChest.class)){
+
+            ArrayList<Dice> toAdd = new ArrayList<>();
+
+            for(int i : h){
+                if(hand[i] == null)
+                    break;
+                toAdd.add(hand[i]);
+                hand[i] = null;
+            }
+
+            Arrays.sort(hand, new SortHelper());
+            cleanUp();
+
+            ((TreasureChest) fortune).getHand().setHand(toAdd.toArray(new Dice[]{}));
+        }
+    }
+
 }
