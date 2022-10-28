@@ -429,7 +429,11 @@ class HandTest {
         Hand hand = new Hand();
         assertTrue(hand.getChest(new TreasureChest()).getClass().equals(Hand.class));
     }
-
+    @Test
+    void getTreasureChestNoFortune(){
+        Hand hand = new Hand();
+        assertTrue(hand.getChest(new Coin())== null);
+    }
 
 }
 
