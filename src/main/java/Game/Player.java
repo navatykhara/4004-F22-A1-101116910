@@ -48,4 +48,10 @@ public class Player {
         return hand;
     }
 
+    public boolean isAlive(){
+        if(hand.getNumSkulls(fortune) >= 3)
+            return false;
+        else
+            return true;
+    }
 }
