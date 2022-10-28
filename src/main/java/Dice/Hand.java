@@ -127,6 +127,7 @@ public class Hand {
             Arrays.sort(hand, new SortHelper());
             cleanUp();
 
+
             ((TreasureChest) fortune).getHand().setHand(toAdd.toArray(new Dice[8]));
         }
 
@@ -169,4 +170,14 @@ public class Hand {
         return display;
     }
 
+    public String toString(FortuneCards fortune){
+        String display = "";
+        if(fortune != null && fortune.getClass().equals(TreasureChest.class))
+            for(Dice d : getChest(fortune).getHand()){
+                if(d == null)
+                    break;
+                display += "[" + d.getDice().toChar() + "]";
+            }
+        return display;
+    }
 }
