@@ -24,16 +24,25 @@ public class Scorer {
 
     public int score(){
         int total = 0;
+        int count = 0;
+
         for(DiceState d : freq.keySet()){
 
             if(rule.containsKey(freq.get(d))) {
                 total += rule.get(freq.get(d));
+                if(!(d == DiceState.COIN || d == DiceState.DIAMOND)){
+                    count += freq.get(d);
+                }
             }
 
             if (d == DiceState.COIN || d == DiceState.DIAMOND) {
                 total += 100 * freq.get(d);
+                count += freq.get(d);
             }
+        }
 
+        if(count == 8){
+            total += 500;
         }
 
         return  total;
