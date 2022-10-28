@@ -72,4 +72,10 @@ public class Fortunes {
         return fortunes;
     }
 
+    public FortuneCards getFortune(){
+        if(stackIndex == fortunes.length)
+            shuffle();
+        return fortunes[stackIndex++];
+    }
+
 }
