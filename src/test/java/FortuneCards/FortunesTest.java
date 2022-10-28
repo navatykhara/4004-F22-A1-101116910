@@ -61,5 +61,23 @@ public class FortunesTest {
         assertTrue(true);
     }
 
+    @Test
+    void shuffle() {
+
+        FortuneCards[] temp = new FortuneCards[]{
+                (FortuneCards) new TreasureChest(),
+                (FortuneCards) new TreasureChest(),
+                (FortuneCards) new Coin(),
+                (FortuneCards) new TreasureChest(),
+                (FortuneCards) new Sorceress(),
+                (FortuneCards) new SeaBattle(4)
+        };
+
+        Fortunes fortunes = new Fortunes();
+
+        assertEquals(temp, fortunes.shuffle(temp));
+    }
+
+
 
 }
