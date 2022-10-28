@@ -620,8 +620,8 @@ class HandTest {
 
         count = 0;
         for(Dice d: hand.getHand()) {
-            System.out.println(d != null ? d.face : null);
-            count++;
+            if(d != null)
+                count++;
         }
 
         //Check to see correct number of dice added back
