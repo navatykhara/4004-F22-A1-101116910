@@ -14,6 +14,7 @@ public class Scorer {
         rule = new HashMap<>();
 
         rule.put(3, 100);
+        rule.put(4, 200);
     }
 
     public int score(){
