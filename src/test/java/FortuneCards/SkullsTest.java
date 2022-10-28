@@ -12,5 +12,5 @@ public class SkullsTest {
         Skulls s = new Skulls(skulls);
         assertEquals(s.getSkulls(), skulls);
     }
-    
+
 }
