@@ -129,6 +129,28 @@ public class Hand {
 
             ((TreasureChest) fortune).getHand().setHand(toAdd.toArray(new Dice[]{}));
         }
+
+    }
+    public void removeFromChest(FortuneCards fortune, int[] h){
+
+        if(fortune != null && fortune.getClass().equals(TreasureChest.class)){
+
+            for(int i : h){
+                if((i < 0 || i > getChest(fortune).getHand().length-1) || hand[i] == null)
+                    break;
+
+                for(int j = 0; j < MAX_DICE; j++){
+                    if(hand[j] == null) {
+                        hand[j] = getChest(fortune).getHand()[i];
+                        getChest(fortune).getHand()[i] = null;
+                        break;
+                    }
+                }
+            }
+
+            Arrays.sort(hand, new SortHelper());
+            cleanUp();
+        }
     }
 
 }
