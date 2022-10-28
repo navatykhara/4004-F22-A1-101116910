@@ -33,7 +33,7 @@ public class Hand {
 
     public void roll(int[] req){
         for(int i : req){
-            if(hand[i] == null)
+            if(i < 0 || hand[i] == null)
                 break;
             hand[i].roll();
         }
