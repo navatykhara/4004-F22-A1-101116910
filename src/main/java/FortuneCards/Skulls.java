@@ -11,6 +11,5 @@ public class Skulls implements FortuneCards{
     public int getSkulls(){
         return numSkulls;
     }
-
-
+    public String toString(){ return "SKULLS"; }
 }
