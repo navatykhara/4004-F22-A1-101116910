@@ -1,10 +1,16 @@
 package FortuneCards;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class Fortunes {
 
     FortuneCards[] fortunes;
+    int stackIndex;
 
     public Fortunes() {
+        stackIndex = 0;
         fortunes = new FortuneCards[35];
 
         initialize();
@@ -46,6 +52,23 @@ public class Fortunes {
         for (int i = 0; i < 2; i++, index++)
             fortunes[index] = (FortuneCards) new SeaBattle(4);
 
+        return fortunes;
+    }
+
+    public FortuneCards[] shuffle(){
+
+        List<FortuneCards> tempList = Arrays.asList(fortunes);
+        Collections.shuffle(tempList);
+        tempList.toArray(fortunes);
+
+        stackIndex = 0;
+
+        return fortunes;
+    }
+
+    public FortuneCards[] shuffle(FortuneCards[] f){
+        fortunes = f;
+        stackIndex = 0;
         return fortunes;
     }
 
