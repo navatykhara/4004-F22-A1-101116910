@@ -118,7 +118,7 @@ public class Hand {
             ArrayList<Dice> toAdd = new ArrayList<>();
 
             for(int i : h){
-                if((i < 0) || hand[i] == null)
+                if((i < 0 || i > MAX_DICE-1) || hand[i] == null)
                     break;
                 toAdd.add(hand[i]);
                 hand[i] = null;
