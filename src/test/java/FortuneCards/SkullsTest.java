@@ -13,5 +13,11 @@ public class SkullsTest {
         assertEquals(s.getSkulls(), skulls);
     }
 
-    public String toString(){ return "SKULLS"; }
+    @Test
+    void testToString() {
+        int skulls = 1;
+        Skulls s = new Skulls(skulls);
+        assertEquals(s.toString(), "SKULLS");
+    }
+    
 }
