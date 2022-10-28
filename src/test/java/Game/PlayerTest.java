@@ -1,5 +1,6 @@
 package Game;
 
+import Dice.Hand;
 import FortuneCards.Coin;
 import org.junit.jupiter.api.Test;
 
@@ -39,6 +40,12 @@ class PlayerTest {
         Coin coin = new Coin();
         p.setFortune(coin);
         assertEquals(p.getFortune(), coin);
+    }
+
+    @Test
+    void getHand(){
+        Player p = new Player(1);
+        assertTrue(p.getHand().getClass().equals(Hand.class));
     }
 
 }
