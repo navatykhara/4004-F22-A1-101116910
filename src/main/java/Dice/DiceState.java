@@ -57,6 +57,10 @@ public enum DiceState {
             return 'X';
         }
 
+    },
+    MONKEYPARROT{
+        public String toString(){ return "MONKEY-PARROT";}
+
     };
 
     public char toChar() {
