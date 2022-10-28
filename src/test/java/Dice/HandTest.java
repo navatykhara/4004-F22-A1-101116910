@@ -569,5 +569,66 @@ class HandTest {
         assertEquals(count, 0);
 
     }
+    @Test
+    void removeFromChest(){
+
+        Hand hand = new Hand();
+
+        Dice d1 = new Dice();
+        Dice d2 = new Dice();
+        Dice d3 = new Dice();
+        Dice d4 = new Dice();
+        Dice d5 = new Dice();
+        Dice d6 = new Dice();
+        Dice d7 = new Dice();
+        Dice d8 = new Dice();
+
+        d1.setDice(DiceState.COIN);
+        d2.setDice(DiceState.COIN);
+        d3.setDice(DiceState.COIN);
+        d4.setDice(DiceState.COIN);
+        d5.setDice(DiceState.COIN);
+        d6.setDice(DiceState.COIN);
+        d7.setDice(DiceState.COIN);
+        d8.setDice(DiceState.COIN);
+
+        hand.setHand(new Dice[]{ d1,
+                d2,
+                d3,
+                d4,
+                d5,
+                d6,
+                d7,
+                d8});
+
+        Arrays.sort(hand.getHand(), new SortHelper());
+        hand.cleanUp();
+
+        TreasureChest tc = new TreasureChest();
+        hand.addToChest(tc, new int[] {0, 1, 2});
+
+        hand.removeFromChest(tc, new int[]{0, 1});
+
+        int count = 0;
+        for(Dice d: hand.getChest(tc).getHand()) {
+            if(d != null)
+                count++;
+        }
+
+        //Check to see removed correct number of dice
+        assertEquals(count, 1);
+
+        count = 0;
+        for(Dice d: hand.getHand()) {
+            System.out.println(d != null ? d.face : null);
+            count++;
+        }
+
+        //Check to see correct number of dice added back
+        assertEquals(count, 7);
+
+
+    }
+
 }
 
