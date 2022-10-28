@@ -6,5 +6,4 @@ public class Captain implements FortuneCards{
     public String toString() {
         return "CAPTAIN";
     }
-    
 }
