@@ -23,4 +23,10 @@ public class SorceressTest {
         assertEquals(s.getRoll(), 0);
     }
 
+    @Test
+    void testToString() {
+        Sorceress s = new Sorceress();
+        assertEquals(s.toString(), "SORCERESS");
+    }
+
 }
