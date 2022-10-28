@@ -34,12 +34,12 @@ public class Scorer {
 
             if(rule.containsKey(freq.get(d))) {
                 total += rule.get(freq.get(d));
-                if(!(d == DiceState.COIN)){
+                if(!(d == DiceState.COIN || d == DiceState.DIAMOND)){
                     count += freq.get(d);
                 }
             }
 
-            if (d == DiceState.COIN) {
+            if (d == DiceState.COIN || d == DiceState.DIAMOND) {
                 total += 100 * freq.get(d);
                 count += freq.get(d);
             }
@@ -63,6 +63,8 @@ public class Scorer {
         if(fortune != null) {
             if (fortune.getClass().equals(Coin.class))
                 freq.put(DiceState.COIN, freq.get(DiceState.COIN) != null ? freq.get(DiceState.COIN) + 1 : 1);
+            if (fortune.getClass().equals(Diamond.class))
+                freq.put(DiceState.DIAMOND, freq.get(DiceState.DIAMOND) != null ? freq.get(DiceState.DIAMOND) + 1 : 1);
         }
     }
 
