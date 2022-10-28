@@ -127,7 +127,7 @@ public class Hand {
             Arrays.sort(hand, new SortHelper());
             cleanUp();
 
-            ((TreasureChest) fortune).getHand().setHand(toAdd.toArray(new Dice[]{}));
+            ((TreasureChest) fortune).getHand().setHand(toAdd.toArray(new Dice[8]));
         }
 
     }
