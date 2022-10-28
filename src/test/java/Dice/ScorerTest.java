@@ -51,7 +51,6 @@ public class ScorerTest {
         assertEquals(temp, scorer.getFrequency());
 
     }
-
     @Test
     void testDiamond() {
         Hand hand = new Hand();
