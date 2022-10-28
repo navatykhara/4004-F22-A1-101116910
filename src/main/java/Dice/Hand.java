@@ -1,6 +1,7 @@
 package Dice;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Hand {
 
@@ -30,6 +31,18 @@ public class Hand {
         this.hand = hand;
     }
 
+    public void roll(int[] req){
+        for(int i : req){
+            if(hand[i] == null)
+                break;
+            hand[i].roll();
+        }
+
+        Arrays.sort(hand, new SortHelper());
+        cleanUp();
+
+    }
+
     public void cleanUp(){
         for(int i = MAX_DICE-1; i >= 0; i--){
             if(hand[i] == null) {
@@ -42,5 +55,7 @@ public class Hand {
             }
         }
     }
+
+
 
 }
