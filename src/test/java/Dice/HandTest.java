@@ -148,6 +148,7 @@ class HandTest {
                 d6,
                 d7,
                 d8});
+
         hand.cleanUp();
 
         int countNulls = 0;
@@ -156,6 +157,29 @@ class HandTest {
                 countNulls++;
 
         assertEquals(countNulls, 1);
+    }
+    @Test
+    void rollAllNulls(){
+
+        Hand hand = new Hand();
+
+        hand.setHand(new Dice[]{ null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null});
+
+        hand.cleanUp();
+        hand.roll(new int[] {0,1,2,3,4,5,6,7});
+
+        for(int i = 0; i < hand.getHand().length; i++)
+            if(hand.getHand()[i] != null)
+                assertTrue(false);
+        assertTrue(true);
+
     }
 }
 
