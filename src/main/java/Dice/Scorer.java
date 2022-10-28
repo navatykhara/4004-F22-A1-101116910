@@ -53,6 +53,12 @@ public class Scorer {
             total += 500;
         }
 
+        if(fortune != null && fortune.getClass().equals(SeaBattle.class))
+            if(freq.get(DiceState.SWORD) != null && freq.get(DiceState.SWORD) >=  ((SeaBattle) fortune).getSwords())
+                total += ((SeaBattle) fortune).getBonus();
+            else
+                total = -((SeaBattle) fortune).getBonus();
+
         return (fortune != null && fortune.getClass().equals(Captain.class)) ? total*2 : total;
     }
 
