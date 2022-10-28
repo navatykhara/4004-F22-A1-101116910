@@ -1,5 +1,6 @@
 package Game;
 
+import FortuneCards.Coin;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,4 +32,13 @@ class PlayerTest {
         p.setTotal(10);
         assertEquals(p.getTotal(), 10);
     }
+
+    @Test
+    void setFortune() {
+        Player p = new Player(1);
+        Coin coin = new Coin();
+        p.setFortune(coin);
+        assertEquals(p.getFortune(), coin);
+    }
+
 }
