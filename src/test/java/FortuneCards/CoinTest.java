@@ -11,5 +11,5 @@ public class CoinTest {
         Coin c = new Coin();
         assertEquals(c.toString(), "COIN");
     }
-    
+
 }
