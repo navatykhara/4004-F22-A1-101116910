@@ -35,6 +35,46 @@ class HandTest {
         hand.setHand(compare.getHand());
         assertTrue(hand.getHand().equals(compare.getHand()));
     }
+    @Test
+    void cleanUp(){
+        Hand hand = new Hand();
+
+        Dice d1 = new Dice();
+        Dice d2 = new Dice();
+        Dice d3 = new Dice();
+        Dice d4 = new Dice();
+        Dice d5 = new Dice();
+        Dice d6 = new Dice();
+        Dice d7 = new Dice();
+        Dice d8 = new Dice();
+
+        d1.setDice(DiceState.SKULL);
+        d2.setDice(DiceState.SKULL);
+        d3.setDice(DiceState.SKULL);
+        d4.setDice(DiceState.SKULL);
+        d5.setDice(DiceState.SKULL);
+        d6.setDice(DiceState.SKULL);
+        d7.setDice(DiceState.SKULL);
+        d8.setDice(DiceState.SKULL);
+
+        hand.setHand(new Dice[]{ d1,
+                d2,
+                d3,
+                d4,
+                d5,
+                d6,
+                d7,
+                d8});
+
+        hand.cleanUp();
+
+        int countNulls = 0;
+        for(Dice d : hand.getHand())
+            if(d == null)
+                countNulls++;
+
+        assertEquals(countNulls, hand.getHand().length);
+    }
 
 }
 
