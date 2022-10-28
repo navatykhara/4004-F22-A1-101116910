@@ -3,6 +3,7 @@ package Dice;
 import FortuneCards.Coin;
 import FortuneCards.Skulls;
 import FortuneCards.Sorceress;
+import FortuneCards.TreasureChest;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -423,5 +424,12 @@ class HandTest {
         assertEquals(hand.getNumSkulls(null), 1);
 
     }
+    @Test
+    void getTreasureChest(){
+        Hand hand = new Hand();
+        assertTrue(hand.getChest(new TreasureChest()).getClass().equals(Hand.class));
+    }
+
+    
 }
 
