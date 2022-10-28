@@ -24,4 +24,11 @@ class PlayerTest {
         Player p = new Player(1);
         assertEquals(p.getId(), 1);
     }
+
+    @Test
+    void setTotal() {
+        Player p = new Player(1);
+        p.setTotal(10);
+        assertEquals(p.getTotal(), 10);
+    }
 }
