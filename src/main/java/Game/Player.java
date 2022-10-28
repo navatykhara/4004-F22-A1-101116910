@@ -4,10 +4,12 @@ public class Player {
 
     int score;
     int id;
+    int total;
 
     public Player(int i){
         this.id = i;
         score = 0;
+        total =0;
     }
 
     public int getScore() {
@@ -18,5 +20,13 @@ public class Player {
     }
     public int getId(){
         return this.id;
+    }
+
+    public int getTotal(){
+        return this.total;
+    }
+
+    public void setTotal(int i) {
+        this.total = i;
     }
 }
