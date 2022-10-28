@@ -13,4 +13,5 @@ public class SkullsTest {
         assertEquals(s.getSkulls(), skulls);
     }
 
+    public String toString(){ return "SKULLS"; }
 }
