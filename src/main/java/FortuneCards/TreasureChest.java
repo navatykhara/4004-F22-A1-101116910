@@ -9,5 +9,9 @@ public class TreasureChest implements  FortuneCards{
     public Hand getHand(){
         return chest;
     }
+    @Override
+    public String toString() {
+        return "TREASURE CHEST";
+    }
 
 }
