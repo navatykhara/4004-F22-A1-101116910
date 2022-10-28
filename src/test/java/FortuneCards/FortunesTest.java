@@ -115,5 +115,4 @@ public class FortunesTest {
         assertEquals(temp[(temp.length-1)/2], fortune.getFortune());
     }
 
-    
 }
