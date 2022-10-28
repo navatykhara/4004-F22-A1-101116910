@@ -2,6 +2,7 @@ package Dice;
 
 import FortuneCards.FortuneCards;
 import FortuneCards.Skulls;
+import FortuneCards.Sorceress;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,8 +13,6 @@ public class Hand {
 
     Dice[] hand;
     ArrayList<Dice> graveyard;
-
-    FortuneCards fortune;
 
     public Hand(){
         hand = new Dice[MAX_DICE];
@@ -67,6 +66,42 @@ public class Hand {
         }
     }
 
+    public void rollSkull(FortuneCards fortune){
+
+        if(fortune != null && fortune.getClass().equals(Sorceress.class))
+            if(graveyard.size() > 0 && ((Sorceress) fortune).getRoll() == 1) {
+                for (int j = 0; j < hand.length; j++) {
+                    if (hand[j] == null) {
+                        hand[j] = graveyard.remove(0);
+                        hand[j].roll();
+                        ((Sorceress) fortune).useRoll();
+                        break;
+                    }
+                }
+            }
+
+
+        Arrays.sort(hand, new SortHelper());
+        cleanUp();
+    }
+
+    public void rollSkull(FortuneCards fortune, Dice d){
+
+        if(fortune != null && fortune.getClass().equals(Sorceress.class))
+            if(graveyard.size() > 0 && ((Sorceress) fortune).getRoll() == 1) {
+                for (int j = 0; j < hand.length; j++) {
+                    if (hand[j] == null) {
+                        hand[j] = graveyard.remove(0);
+                        hand[j] = d;
+                        ((Sorceress) fortune).useRoll();
+                        break;
+                    }
+                }
+            }
+
+        Arrays.sort(hand, new SortHelper());
+        cleanUp();
+    }
 
 
 }
