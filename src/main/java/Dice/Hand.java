@@ -153,4 +153,20 @@ public class Hand {
         }
     }
 
+    public String toString(){
+        String display = "";
+        for(Dice d : hand){
+            if(d == null)
+                break;
+            display += "[" + d.getDice().toChar() + "]";
+        }
+        display += "\t|\t";
+        for(Dice d : graveyard){
+            if(d == null)
+                break;
+            display += "[" + d.getDice().toChar() + "]";
+        }
+        return display;
+    }
+
 }
