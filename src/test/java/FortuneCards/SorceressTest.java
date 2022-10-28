@@ -15,4 +15,12 @@ public class SorceressTest {
         assertEquals(s.getRoll(), 0);
     }
 
+    @Test
+    void getRoll() {
+        Sorceress s = new Sorceress();
+        assertEquals(s.getRoll(), 1);
+        s.useRoll();
+        assertEquals(s.getRoll(), 0);
+    }
+
 }
