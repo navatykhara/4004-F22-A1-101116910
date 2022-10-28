@@ -70,5 +70,9 @@ class DiceStateTest {
     void testMPStateString(){
         assertEquals(DiceState.MONKEYPARROT.toString(), "MONKEY-PARROT");
     }
+    @Test
+    void testMPStateChar(){
+        assertEquals(DiceState.MONKEYPARROT.toChar(), "W");
+    }
 
 }
