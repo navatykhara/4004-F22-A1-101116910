@@ -2,6 +2,8 @@ package Dice;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class HandTest {
@@ -114,6 +116,46 @@ class HandTest {
                 countNulls++;
 
         assertEquals(countNulls, 0);
+    }
+
+    @Test
+    void cleanUpOneSkulls(){
+        Hand hand = new Hand();
+
+        Dice d1 = new Dice();
+        Dice d2 = new Dice();
+        Dice d3 = new Dice();
+        Dice d4 = new Dice();
+        Dice d5 = new Dice();
+        Dice d6 = new Dice();
+        Dice d7 = new Dice();
+        Dice d8 = new Dice();
+
+        d1.setDice(DiceState.COIN);
+        d2.setDice(DiceState.COIN);
+        d3.setDice(DiceState.COIN);
+        d4.setDice(DiceState.COIN);
+        d5.setDice(DiceState.COIN);
+        d6.setDice(DiceState.COIN);
+        d7.setDice(DiceState.COIN);
+        d8.setDice(DiceState.SKULL);
+
+        hand.setHand(new Dice[]{ d1,
+                d2,
+                d3,
+                d4,
+                d5,
+                d6,
+                d7,
+                d8});
+        hand.cleanUp();
+
+        int countNulls = 0;
+        for(Dice d : hand.getHand())
+            if(d == null)
+                countNulls++;
+
+        assertEquals(countNulls, 1);
     }
 }
 
