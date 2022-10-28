@@ -1,6 +1,7 @@
 package Dice;
 
-import FortuneCards.SeaBattle;
+import FortuneCards.*;
+
 
 import java.util.HashMap;
 
@@ -9,6 +10,7 @@ public class Scorer {
     HashMap<DiceState, Integer> freq;
     HashMap<Integer, Integer> rule;
 
+    FortuneCards fortune;
     public Scorer(){
         freq = new HashMap<>();
         rule = new HashMap<>();
@@ -21,7 +23,9 @@ public class Scorer {
         rule.put(8, 4000);
 
     }
-
+    public void setFortune(FortuneCards f){
+        fortune = f;
+    }
     public int score(){
         int total = 0;
         int count = 0;
@@ -45,7 +49,7 @@ public class Scorer {
             total += 500;
         }
 
-        return  total;
+        return fortune.getClass().equals(Captain.class) ? total*2 : total;
     }
 
     public void count(Hand hand){
