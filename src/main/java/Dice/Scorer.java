@@ -49,7 +49,7 @@ public class Scorer {
             total += 500;
         }
 
-        return fortune.getClass().equals(Captain.class) ? total*2 : total;
+        return (fortune != null && fortune.getClass().equals(Captain.class)) ? total*2 : total;
     }
 
     public void count(Hand hand){
