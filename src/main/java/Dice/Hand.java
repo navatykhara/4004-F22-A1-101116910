@@ -1,5 +1,8 @@
 package Dice;
 
+import FortuneCards.FortuneCards;
+import FortuneCards.Skulls;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -9,6 +12,8 @@ public class Hand {
 
     Dice[] hand;
     ArrayList<Dice> graveyard;
+
+    FortuneCards fortune;
 
     public Hand(){
         hand = new Dice[MAX_DICE];
@@ -29,6 +34,12 @@ public class Hand {
     }
     public void setHand(Dice[] hand){
         this.hand = hand;
+    }
+
+    public int getNumSkulls(FortuneCards f){
+        if(f != null && f.getClass().equals(Skulls.class))
+            return graveyard.size() + ((Skulls) f).getSkulls();
+        return graveyard.size();
     }
 
     public void roll(int[] req){
