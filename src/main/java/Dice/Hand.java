@@ -35,11 +35,8 @@ public class Hand {
         cleanUp();
     }
 
-    public void setOnSkullIsland(){
-        int count = 0;
-        for(Dice d : graveyard)
-            if(d != null && d.getDice().equals(DiceState.SKULL))
-                count++;
+    public void setOnSkullIsland(FortuneCards fortune){
+        int count = getNumSkulls(fortune);
 
         if(count >= 4)
             onSkullIsland = true;
