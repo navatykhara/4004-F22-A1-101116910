@@ -889,4 +889,51 @@ public class Part2 {
         assertFalse(p1.isAlive());
         assertEquals(scorer.score(), -500);
     }
+    @Test
+    void row116(){
+        Player p1 = new Player(1);
+        Hand hand = new Hand();
+        Scorer scorer = new Scorer();
+
+        Dice d1 = new Dice();
+        Dice d2 = new Dice();
+        Dice d3 = new Dice();
+        Dice d4 = new Dice();
+        Dice d5 = new Dice();
+        Dice d6 = new Dice();
+        Dice d7 = new Dice();
+        Dice d8 = new Dice();
+
+        d1.setDice(DiceState.MONKEY);
+        d2.setDice(DiceState.MONKEY);
+        d3.setDice(DiceState.SKULL);
+        d4.setDice(DiceState.SKULL);
+        d5.setDice(DiceState.SKULL);
+        d6.setDice(DiceState.SWORD);
+        d7.setDice(DiceState.SWORD);
+        d8.setDice(DiceState.SWORD);
+
+        hand.setHand(new Dice[]{ d1,
+                d2,
+                d3,
+                d4,
+                d5,
+                d6,
+                d7,
+                d8});
+
+        p1.getHand().setHand(hand.getHand());
+        Arrays.sort(p1.getHand().getHand(), new SortHelper());
+        p1.getHand().cleanUp();
+
+        System.out.println(p1.getHand().toString());
+
+
+        scorer.setAlive(p1.isAlive());
+        scorer.setFortune(new SeaBattle(4));
+        scorer.count(hand);
+
+        assertFalse(p1.isAlive());
+        assertEquals(scorer.score(), -1000);
+    }
 }
