@@ -859,7 +859,7 @@ class HandTest {
 
         Arrays.sort(hand.getHand(), new SortHelper());
         hand.cleanUp();
-        hand.setOnSkullIsland();
+        hand.setOnSkullIsland(new Coin());
 
 
         assertTrue(hand.isOnSkullIsland());
