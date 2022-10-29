@@ -30,6 +30,7 @@ public class Hand {
         }
 
         graveyard = new ArrayList<>();
+        Arrays.sort(hand, new SortHelper());
         cleanUp();
 
         setOnSkullIsland();
