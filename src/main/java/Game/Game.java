@@ -141,5 +141,16 @@ public class Game {
         return "Player " + p.getId() + " adds " + temp + " to the TREASURE CHEST resulting in " + p.getHand().toString(p.getFortune());
 
     }
+    public String removeFromChestForPlayer(Player p, int[] req) {
+
+        String temp = "";
+        for(int i : req)
+            temp += "[" +p.getHand().getChest(p.getFortune()).getHand()[i].getDice().toChar() + "]";
+
+        p.getHand().removeFromChest(p.getFortune(), req);
+
+        return "Player " + p.getId() + " removes " + temp + " from the TREASURE CHEST resulting in " + p.getHand().toString(p.getFortune());
+
+    }
 }
 
