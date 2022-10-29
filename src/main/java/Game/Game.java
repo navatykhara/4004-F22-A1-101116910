@@ -97,6 +97,10 @@ public class Game {
     public String rollSkullForPlayer(Player p){
         String msg = "";
         if(p.getFortune() != null && p.getFortune().getClass().equals(Sorceress.class)) {
+
+            if(((Sorceress) p.getFortune()).getRoll() < 1)
+                return "Player " + p.getId() + " has already rerolled a skull dice.";
+
             p.getHand().rollSkull(p.getFortune());
             msg += "Player " + p.getId() + " re-rolls the skull dice and receives " + p.getHand().toString();
         }else {
@@ -107,6 +111,10 @@ public class Game {
     public String rollSkullForPlayer(Player p, Dice d){
         String msg = "";
         if(p.getFortune() != null && p.getFortune().getClass().equals(Sorceress.class)) {
+
+            if(((Sorceress) p.getFortune()).getRoll() < 1)
+                return "Player " + p.getId() + " has already rerolled a skull dice.";
+
             p.getHand().rollSkull(p.getFortune(), d);
             msg += "Player " + p.getId() + " re-rolls the skull dice and receives " + p.getHand().toString();
         }else {
@@ -116,3 +124,4 @@ public class Game {
     }
 
 }
+
