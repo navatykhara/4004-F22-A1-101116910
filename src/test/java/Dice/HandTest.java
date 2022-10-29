@@ -16,11 +16,7 @@ class HandTest {
     void initialize() {
         Hand hand = new Hand();
         hand.initialize();
-        for(int i = 0; i < 8; i++){
-            if(hand.getHand()[i] == null)
-                assertTrue(false);
-        }
-        assertTrue(true);
+        assertTrue(hand.getHand() != null);
     }
 
     @Test
