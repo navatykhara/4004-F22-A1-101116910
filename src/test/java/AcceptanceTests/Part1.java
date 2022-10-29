@@ -1123,4 +1123,63 @@ public class Part1 {
         scorer.count(hand);
         assertEquals(scorer.score(), 400);
     }
+    @Test
+    void row69(){
+        Hand hand = new Hand();
+        Scorer scorer = new Scorer();
+
+        Dice d1 = new Dice();
+        Dice d2 = new Dice();
+        Dice d3 = new Dice();
+        Dice d4 = new Dice();
+        Dice d5 = new Dice();
+        Dice d6 = new Dice();
+        Dice d7 = new Dice();
+        Dice d8 = new Dice();
+
+        d1.setDice(DiceState.MONKEY);
+        d2.setDice(DiceState.MONKEY);
+        d3.setDice(DiceState.SKULL);
+        d4.setDice(DiceState.SKULL);
+        d5.setDice(DiceState.SWORD);
+        d6.setDice(DiceState.SWORD);
+        d7.setDice(DiceState.DIAMOND);
+        d8.setDice(DiceState.PARROT);
+
+        hand.setHand(new Dice[]{ d1,
+                d2,
+                d3,
+                d4,
+                d5,
+                d6,
+                d7,
+                d8});
+
+        Arrays.sort(hand.getHand(), new SortHelper());
+        hand.cleanUp();
+        System.out.println(hand.toString());
+
+        Dice rolled_d1 = new Dice();
+        Dice rolled_d2 = new Dice();
+
+        rolled_d1.setDice(DiceState.DIAMOND);
+        rolled_d2.setDice(DiceState.DIAMOND);
+
+        hand.setHand(new Dice[]{ hand.getHand()[0],
+                rolled_d1,
+                rolled_d2,
+                hand.getHand()[3],
+                hand.getHand()[4],
+                hand.getHand()[5],
+                hand.getHand()[6],
+                hand.getHand()[7]});
+
+        Arrays.sort(hand.getHand(), new SortHelper());
+        hand.cleanUp();
+        System.out.println(hand.toString());
+
+        scorer.setFortune(new Coin());
+        scorer.count(hand);
+        assertEquals(scorer.score(), 500);
+    }
 }
