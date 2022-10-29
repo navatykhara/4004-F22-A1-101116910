@@ -818,4 +818,75 @@ public class Part2 {
         assertFalse(p1.isAlive());
         assertEquals(scorer.score(), -300);
     }
+    @Test
+    void row115(){
+        Player p1 = new Player(1);
+        Hand hand = new Hand();
+        Scorer scorer = new Scorer();
+
+        Dice d1 = new Dice();
+        Dice d2 = new Dice();
+        Dice d3 = new Dice();
+        Dice d4 = new Dice();
+        Dice d5 = new Dice();
+        Dice d6 = new Dice();
+        Dice d7 = new Dice();
+        Dice d8 = new Dice();
+
+        d1.setDice(DiceState.SWORD);
+        d2.setDice(DiceState.SWORD);
+        d3.setDice(DiceState.SKULL);
+        d4.setDice(DiceState.SKULL);
+        d5.setDice(DiceState.PARROT);
+        d6.setDice(DiceState.PARROT);
+        d7.setDice(DiceState.PARROT);
+        d8.setDice(DiceState.PARROT);
+
+        hand.setHand(new Dice[]{ d1,
+                d2,
+                d3,
+                d4,
+                d5,
+                d6,
+                d7,
+                d8});
+
+        p1.getHand().setHand(hand.getHand());
+        Arrays.sort(p1.getHand().getHand(), new SortHelper());
+        p1.getHand().cleanUp();
+
+        System.out.println(p1.getHand().toString());
+
+        //REROLL 4 PARROTS
+        Dice rolled_d1 = new Dice();
+        Dice rolled_d2 = new Dice();
+        Dice rolled_d3 = new Dice();
+        Dice rolled_d4 = new Dice();
+
+        rolled_d1.setDice(DiceState.SKULL);
+        rolled_d2.setDice(DiceState.SKULL);
+        rolled_d3.setDice(DiceState.SKULL);
+        rolled_d4.setDice(DiceState.SKULL);
+
+        p1.getHand().setHand(new Dice[]{rolled_d1,
+                rolled_d2,
+                rolled_d3,
+                rolled_d4,
+                hand.getHand()[4],
+                hand.getHand()[5],
+                hand.getHand()[6],
+                hand.getHand()[7]});
+
+        Arrays.sort(p1.getHand().getHand(), new SortHelper());
+        p1.getHand().cleanUp();
+
+        System.out.println(p1.getHand().toString());
+
+        scorer.setAlive(p1.isAlive());
+        scorer.setFortune(new SeaBattle(3));
+        scorer.count(hand);
+
+        assertFalse(p1.isAlive());
+        assertEquals(scorer.score(), -500);
+    }
 }
