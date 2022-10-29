@@ -97,7 +97,7 @@ public class Game {
     public String rollSkullForPlayer(Player p){
         String msg = "";
         if(p.getFortune() != null && p.getFortune().getClass().equals(Sorceress.class)) {
-            p.hand.rollSkull(p.getFortune());
+            p.getHand().rollSkull(p.getFortune());
             msg += "Player " + p.getId() + " re-rolls the skull dice and receives " + p.getHand().toString();
         }else {
             msg += "Player " + p.getId() + " does not have the SORCERESS fortune card";
@@ -107,7 +107,7 @@ public class Game {
     public String rollSkullForPlayer(Player p, Dice d){
         String msg = "";
         if(p.getFortune() != null && p.getFortune().getClass().equals(Sorceress.class)) {
-            p.hand.rollSkull(p.getFortune(), d);
+            p.getHand().rollSkull(p.getFortune(), d);
             msg += "Player " + p.getId() + " re-rolls the skull dice and receives " + p.getHand().toString();
         }else {
             msg += "Player " + p.getId() + " does not have the SORCERESS fortune card";
