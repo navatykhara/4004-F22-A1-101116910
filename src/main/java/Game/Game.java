@@ -1,12 +1,17 @@
 package Game;
 
+import Dice.Scorer;
+
 public class Game {
 
     Player[] players;
+    Scorer scorer;
+
 
     public Game(Player[] p){
 
         players = p;
+        scorer = new Scorer();
 
     }
 
@@ -19,6 +24,13 @@ public class Game {
 
         return msg;
     }
-
+    public String getScoreForPlayer(Player p){
+        String msg = "";
+        scorer.count(p.getHand());
+        int score = scorer.score();
+        p.setScore(score);
+        msg += "Player " + p.getId() + " scores " + score + " points.";
+        return msg;
+    }
 
 }
