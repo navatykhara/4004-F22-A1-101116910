@@ -209,8 +209,9 @@ public class GameTest {
         Arrays.sort(d, new SortHelper());
 
         p1.getHand().setHand(d);
+        Arrays.sort(p1.getHand().getHand(), new SortHelper());
         p1.getHand().cleanUp();
-
+        
         p1.setFortune(new Sorceress());
 
         assertEquals(game.rollSkullForPlayer(p1, dice), "Player 1 re-rolls the skull dice and receives [P][P][P][P][P][P][P][P]\t|\t");
