@@ -809,7 +809,7 @@ public class Part2 {
         p1.getHand().setHand(hand.getHand());
         Arrays.sort(p1.getHand().getHand(), new SortHelper());
         p1.getHand().cleanUp();
-        System.out.println(hand.toString());
+        System.out.println(p1.getHand().toString());
 
         p1.setFortune(new Skulls(2));
         assertFalse(p1.isAlive());
