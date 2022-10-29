@@ -482,4 +482,45 @@ public class Part1 {
         scorer.count(hand);
         assertEquals(scorer.score(), 300);
     }
+    @Test
+    void row55(){
+        Hand hand = new Hand();
+        Scorer scorer = new Scorer();
+
+        Dice d1 = new Dice();
+        Dice d2 = new Dice();
+        Dice d3 = new Dice();
+        Dice d4 = new Dice();
+        Dice d5 = new Dice();
+        Dice d6 = new Dice();
+        Dice d7 = new Dice();
+        Dice d8 = new Dice();
+
+        d1.setDice(DiceState.DIAMOND);
+        d2.setDice(DiceState.DIAMOND);
+        d3.setDice(DiceState.DIAMOND);
+        d4.setDice(DiceState.SKULL);
+        d5.setDice(DiceState.SKULL);
+        d6.setDice(DiceState.MONKEY);
+        d7.setDice(DiceState.SWORD);
+        d8.setDice(DiceState.PARROT);
+
+        hand.setHand(new Dice[]{ d1,
+                d2,
+                d3,
+                d4,
+                d5,
+                d6,
+                d7,
+                d8});
+
+        Arrays.sort(hand.getHand(), new SortHelper());
+        hand.cleanUp();
+
+        System.out.println(hand.toString());
+
+        scorer.setFortune(new Coin());
+        scorer.count(hand);
+        assertEquals(scorer.score(), 500);
+    }
 }
