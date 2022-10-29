@@ -9,8 +9,9 @@ public class Scorer {
 
     HashMap<DiceState, Integer> freq;
     HashMap<Integer, Integer> rule;
-
     FortuneCards fortune;
+
+    boolean isAlive;
     public Scorer(){
         freq = new HashMap<>();
         rule = new HashMap<>();
@@ -22,9 +23,13 @@ public class Scorer {
         rule.put(7, 2000);
         rule.put(8, 4000);
 
+        isAlive = true;
     }
     public void setFortune(FortuneCards f){
         fortune = f;
+    }
+    public void setAlive(boolean b){
+        isAlive = b;
     }
     public int score(){
         int total = 0;
@@ -58,6 +63,10 @@ public class Scorer {
                 total += ((SeaBattle) fortune).getBonus();
             else
                 total = -((SeaBattle) fortune).getBonus();
+
+
+        if(!isAlive)
+            total = 0;
 
         return (fortune != null && fortune.getClass().equals(Captain.class)) ? total*2 : total;
     }
