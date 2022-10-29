@@ -56,15 +56,19 @@ public class Scorer {
             }
         }
 
+        if(fortune != null && fortune.getClass().equals(SeaBattle.class))
+            if(freq.get(DiceState.SWORD) != null && freq.get(DiceState.SWORD) >=  ((SeaBattle) fortune).getSwords()) {
+                count += freq.get(DiceState.SWORD);
+                total += ((SeaBattle) fortune).getBonus();
+            }else {
+                total = -((SeaBattle) fortune).getBonus();
+            }
+
         if(count == max_bonus){
             total += 500;
         }
 
-        if(fortune != null && fortune.getClass().equals(SeaBattle.class))
-            if(freq.get(DiceState.SWORD) != null && freq.get(DiceState.SWORD) >=  ((SeaBattle) fortune).getSwords())
-                total += ((SeaBattle) fortune).getBonus();
-            else
-                total = -((SeaBattle) fortune).getBonus();
+
 
 
         if(!isAlive)
