@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 
-import static Dice.DiceState.COIN;
-import static Dice.DiceState.DIAMOND;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ScorerTest {
@@ -24,14 +22,14 @@ public class ScorerTest {
         Dice d7 = new Dice();
         Dice d8 = new Dice();
 
-        d1.setDice(COIN);
-        d2.setDice(COIN);
-        d3.setDice(COIN);
-        d4.setDice(COIN);
-        d5.setDice(COIN);
-        d6.setDice(COIN);
-        d7.setDice(COIN);
-        d8.setDice(COIN);
+        d1.setDice(DiceState.COIN);
+        d2.setDice(DiceState.COIN);
+        d3.setDice(DiceState.COIN);
+        d4.setDice(DiceState.COIN);
+        d5.setDice(DiceState.COIN);
+        d6.setDice(DiceState.COIN);
+        d7.setDice(DiceState.COIN);
+        d8.setDice(DiceState.COIN);
 
         hand.setHand(new Dice[]{ d1,
                 d2,
@@ -46,7 +44,7 @@ public class ScorerTest {
         scorer.count(hand);
 
         HashMap<DiceState, Integer> temp = new HashMap<>();
-        temp.put(COIN, 8);
+        temp.put(DiceState.COIN, 8);
 
         assertEquals(temp, scorer.getFrequency());
 
@@ -65,7 +63,7 @@ public class ScorerTest {
         Dice d7 = new Dice();
         Dice d8 = new Dice();
 
-        d1.setDice(DIAMOND);
+        d1.setDice(DiceState.DIAMOND);
         d2.setDice(DiceState.SKULL);
         d3.setDice(DiceState.SKULL);
         d4.setDice(DiceState.MONKEY);
@@ -100,7 +98,7 @@ public class ScorerTest {
         Dice d7 = new Dice();
         Dice d8 = new Dice();
 
-        d1.setDice(COIN);
+        d1.setDice(DiceState.COIN);
         d2.setDice(DiceState.SKULL);
         d3.setDice(DiceState.SKULL);
         d4.setDice(DiceState.MONKEY);
@@ -410,7 +408,7 @@ public class ScorerTest {
         Dice d7 = new Dice();
         Dice d8 = new Dice();
 
-        d1.setDice(DIAMOND);
+        d1.setDice(DiceState.DIAMOND);
         d2.setDice(DiceState.SKULL);
         d3.setDice(DiceState.SKULL);
         d4.setDice(DiceState.MONKEY);
@@ -482,10 +480,10 @@ public class ScorerTest {
         Dice d7 = new Dice();
         Dice d8 = new Dice();
 
-        d1.setDice(COIN);
+        d1.setDice(DiceState.COIN);
         d2.setDice(DiceState.SKULL);
         d3.setDice(DiceState.SKULL);
-        d4.setDice(COIN);
+        d4.setDice(DiceState.COIN);
         d5.setDice(DiceState.MONKEY);
         d6.setDice(DiceState.PARROT);
         d7.setDice(DiceState.PARROT);
@@ -554,10 +552,10 @@ public class ScorerTest {
         Dice d7 = new Dice();
         Dice d8 = new Dice();
 
-        d1.setDice(DIAMOND);
+        d1.setDice(DiceState.DIAMOND);
         d2.setDice(DiceState.SKULL);
         d3.setDice(DiceState.SKULL);
-        d4.setDice(DIAMOND);
+        d4.setDice(DiceState.DIAMOND);
         d5.setDice(DiceState.MONKEY);
         d6.setDice(DiceState.PARROT);
         d7.setDice(DiceState.PARROT);
@@ -630,7 +628,7 @@ public class ScorerTest {
         d2.setDice(DiceState.SKULL);
         d3.setDice(DiceState.SKULL);
         d4.setDice(DiceState.SWORD);
-        d5.setDice(COIN);
+        d5.setDice(DiceState.COIN);
         d6.setDice(DiceState.PARROT);
         d7.setDice(DiceState.PARROT);
         d8.setDice(DiceState.MONKEY);
@@ -662,11 +660,11 @@ public class ScorerTest {
         Dice d7 = new Dice();
         Dice d8 = new Dice();
 
-        d1.setDice(COIN);
+        d1.setDice(DiceState.COIN);
         d2.setDice(DiceState.SKULL);
         d3.setDice(DiceState.SKULL);
         d4.setDice(DiceState.SWORD);
-        d5.setDice(COIN);
+        d5.setDice(DiceState.COIN);
         d6.setDice(DiceState.PARROT);
         d7.setDice(DiceState.PARROT);
         d8.setDice(DiceState.MONKEY);
@@ -698,7 +696,7 @@ public class ScorerTest {
         Dice d7 = new Dice();
         Dice d8 = new Dice();
 
-        d1.setDice(DIAMOND);
+        d1.setDice(DiceState.DIAMOND);
         d2.setDice(DiceState.SKULL);
         d3.setDice(DiceState.SKULL);
         d4.setDice(DiceState.MONKEY);
@@ -737,14 +735,14 @@ public class ScorerTest {
         Dice d7 = new Dice();
         Dice d8 = new Dice();
 
-        d1.setDice(COIN);
-        d2.setDice(COIN);
-        d3.setDice(COIN);
-        d4.setDice(COIN);
-        d5.setDice(COIN);
-        d6.setDice(COIN);
-        d7.setDice(COIN);
-        d8.setDice(COIN);
+        d1.setDice(DiceState.COIN);
+        d2.setDice(DiceState.COIN);
+        d3.setDice(DiceState.COIN);
+        d4.setDice(DiceState.COIN);
+        d5.setDice(DiceState.COIN);
+        d6.setDice(DiceState.COIN);
+        d7.setDice(DiceState.COIN);
+        d8.setDice(DiceState.COIN);
 
         hand.setHand(new Dice[]{ d1,
                 d2,
@@ -773,14 +771,14 @@ public class ScorerTest {
         Dice d7 = new Dice();
         Dice d8 = new Dice();
 
-        d1.setDice(DIAMOND);
-        d2.setDice(DIAMOND);
-        d3.setDice(DIAMOND);
-        d4.setDice(DIAMOND);
-        d5.setDice(DIAMOND);
-        d6.setDice(DIAMOND);
-        d7.setDice(DIAMOND);
-        d8.setDice(DIAMOND);
+        d1.setDice(DiceState.DIAMOND);
+        d2.setDice(DiceState.DIAMOND);
+        d3.setDice(DiceState.DIAMOND);
+        d4.setDice(DiceState.DIAMOND);
+        d5.setDice(DiceState.DIAMOND);
+        d6.setDice(DiceState.DIAMOND);
+        d7.setDice(DiceState.DIAMOND);
+        d8.setDice(DiceState.DIAMOND);
 
         hand.setHand(new Dice[]{ d1,
                 d2,
