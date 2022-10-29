@@ -8,10 +8,7 @@ import FortuneCards.Fortunes;
 import FortuneCards.Sorceress;
 import FortuneCards.TreasureChest;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
 
 public class Game {
 
@@ -19,15 +16,113 @@ public class Game {
     Scorer scorer;
     Fortunes fortuneDeck;
 
+    int winningRound = 2;
+
     public Game(Player[] p){
 
         players = p;
         scorer = new Scorer();
         fortuneDeck = new Fortunes();
 
-
     }
 
+    public void run(){
+
+        System.out.println("Game starting.");
+        System.out.println();
+
+        do{
+
+
+            for(int i = 0; i < players.length; i++) {
+                System.out.println(getScoreBoard());
+
+                System.out.println("It is Player " + players[i].getId() + "'s turn.");
+                System.out.println(drawFortuneForPlayer(players[i]));
+                scorer.setFortune(players[i].getFortune());
+
+                players[i].getHand().initialize();
+
+                System.out.println(getScoreForPlayer(players[i]));
+
+                while(true) {
+                    System.out.println(players[i].getHand().toString());
+
+                    System.out.println(offerChoicesForPlayer());
+
+                    if(!players[i].isAlive()){
+                        System.out.println("Player " + players[i].getId() + " has died.");
+                        scorer.setAlive(false);
+                        getScoreForPlayer(players[i]);
+                        players[i].setTotal(players[i].getScore() + players[i].getTotal());
+                        break;
+                    }
+
+                    Scanner scanner = new Scanner(System.in);
+                    int choice = scanner.nextInt();
+                    boolean endTurn = false;
+
+                    switch(choice){
+                        case 1:
+                            System.out.println("Choose the dice index you wish to roll (0-7) [no spaces]");
+                            String input = scanner.next();
+                            int[] temp = new int [input.length()];
+                            for(int k = 0; k < temp.length; k++)
+                                temp[k] = Integer.parseInt(input, k, k+1,10);
+                            System.out.println(rollDiceForPlayer(players[i], temp));
+                            break;
+                        case 2:
+                            System.out.println(rollSkullForPlayer(players[i]));
+                            break;
+                        case 3:
+                            System.out.println("Choose the dice index you wish to add to treasure chest (0-7) [no spaces]");
+                            input = scanner.next();
+                            temp = new int [input.length()];
+                            for(int k = 0; k < temp.length; k++)
+                                temp[k] = Integer.parseInt(input, k, k+1,10);
+                            System.out.println(addToChestForPlayer(players[i], temp));
+                            break;
+                        case 4:
+                            System.out.println("Choose the dice index you wish to remove from treasure chest (0-7) [no spaces]");
+                            input = scanner.next();
+                            temp = new int [input.length()];
+                            for(int k = 0; k < temp.length; k++)
+                                temp[k] = Integer.parseInt(input, k, k+1,10);
+                            System.out.println(removeFromChestForPlayer(players[i], temp));
+                            break;
+                        case 5:
+                            System.out.println("Player " + players[i].getId() + "'s turn ended.");
+                            players[i].setTotal(players[i].getScore() + players[i].getTotal());
+                            endTurn = true;
+                            break;
+                        default:
+
+                    }
+
+                    if(endTurn)
+                        break;
+
+                    System.out.println(getScoreForPlayer(players[i]));
+                }
+
+
+            }
+
+            if(checkWinCondition()){
+                winningRound--;
+            }else{
+                winningRound=2;
+            }
+
+        }while(!checkWinCondition() || winningRound > 0);
+
+        for(Player p : players){
+            if(p.getTotal() >= 3000) {
+                System.out.println("Player " + p.getId() + " won with " + p.getTotal() + " points.");
+            }
+        }
+
+    }
     public String getScoreBoard(){
         String msg = "|";
 
