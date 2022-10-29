@@ -65,7 +65,7 @@ public class GameTest {
         Game game = new Game(new Player[]{p1, p2, p3});
 
         p1.setTotal(3000);
-        p2.setScore(2000);
+        p2.setTotal(2000);
         p3.setTotal(1000);
 
         assertTrue(game.checkWinCondition());
@@ -80,9 +80,11 @@ public class GameTest {
         Game game = new Game(new Player[]{p1, p2, p3});
 
         p1.setTotal(2000);
-        p2.setScore(2000);
+        p2.setTotal(2000);
         p3.setTotal(1000);
 
         assertFalse(game.checkWinCondition());
     }
+
+
 }
