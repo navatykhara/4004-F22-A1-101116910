@@ -15,9 +15,12 @@ public class Hand {
     Dice[] hand;
     ArrayList<Dice> graveyard;
 
+    boolean onSkullIsland;
+
     public Hand(){
         hand = new Dice[MAX_DICE];
         graveyard = new ArrayList<>();
+        onSkullIsland = false;
     }
 
     public void initialize(){
@@ -27,8 +30,25 @@ public class Hand {
         }
 
         graveyard = new ArrayList<>();
+        cleanUp();
+
+        setOnSkullIsland();
     }
 
+    public void setOnSkullIsland(){
+        int count = 0;
+        for(Dice d : graveyard)
+            if(d != null && d.getDice().equals(DiceState.SKULL))
+                count++;
+
+        if(count >= 4)
+            onSkullIsland = true;
+        else
+            onSkullIsland = false;
+    }
+    public boolean isOnSkullIsland(){
+        return onSkullIsland;
+    }
     public Dice[] getHand(){
         return hand;
     }
