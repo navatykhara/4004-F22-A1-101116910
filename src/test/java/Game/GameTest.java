@@ -72,5 +72,5 @@ public class GameTest {
         assertTrue(game.checkWinCondition());
     }
 
-    
+
 }

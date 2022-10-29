@@ -32,5 +32,13 @@ public class Game {
         msg += "Player " + p.getId() + " scores " + score + " points.";
         return msg;
     }
+    public boolean checkWinCondition(){
+        for(Player player : players){
+            if(player.getTotal() >= 3000){
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
