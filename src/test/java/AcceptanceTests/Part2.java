@@ -931,7 +931,7 @@ public class Part2 {
 
         scorer.setAlive(p1.isAlive());
         scorer.setFortune(new SeaBattle(4));
-        scorer.count(hand);
+        scorer.count(p1.getHand());
 
         assertFalse(p1.isAlive());
         assertEquals(scorer.score(), -1000);
