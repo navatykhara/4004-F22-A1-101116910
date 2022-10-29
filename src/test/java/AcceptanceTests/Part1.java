@@ -46,10 +46,14 @@ public class Part1 {
                 d8});
 
         Arrays.sort(hand.getHand(), new SortHelper());
+        hand.cleanUp();
+
+        System.out.println(hand.toString());
 
         scorer.setAlive(false);
         scorer.count(hand);
         assertEquals(scorer.score(), 0);
     }
     
+
 }
