@@ -71,7 +71,7 @@ public class Scorer {
 
 
 
-        if(!isAlive)
+        if(!isAlive && !(fortune != null && fortune.getClass().equals(SeaBattle.class)))
             total = 0;
 
         return (fortune != null && fortune.getClass().equals(Captain.class)) ? total*2 : total;
