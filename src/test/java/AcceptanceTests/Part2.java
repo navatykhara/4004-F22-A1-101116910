@@ -5,6 +5,7 @@ import Dice.*;
 import FortuneCards.Coin;
 import FortuneCards.MonkeyBusiness;
 import FortuneCards.Sorceress;
+import FortuneCards.TreasureChest;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -356,5 +357,100 @@ public class Part2 {
         scorer.setFortune(new MonkeyBusiness());
         scorer.count(hand);
         assertEquals(scorer.score(), 0);
+    }
+    @Test
+    void row90(){
+        Hand hand = new Hand();
+        Scorer scorer = new Scorer();
+
+        Dice d1 = new Dice();
+        Dice d2 = new Dice();
+        Dice d3 = new Dice();
+        Dice d4 = new Dice();
+        Dice d5 = new Dice();
+        Dice d6 = new Dice();
+        Dice d7 = new Dice();
+        Dice d8 = new Dice();
+
+        d1.setDice(DiceState.PARROT);
+        d2.setDice(DiceState.PARROT);
+        d3.setDice(DiceState.PARROT);
+        d4.setDice(DiceState.SWORD);
+        d5.setDice(DiceState.SWORD);
+        d6.setDice(DiceState.DIAMOND);
+        d7.setDice(DiceState.DIAMOND);
+        d8.setDice(DiceState.COIN);
+
+        hand.setHand(new Dice[]{ d1,
+                d2,
+                d3,
+                d4,
+                d5,
+                d6,
+                d7,
+                d8});
+
+        Arrays.sort(hand.getHand(), new SortHelper());
+        hand.cleanUp();
+        System.out.println(hand.toString());
+
+        //REROLL 2 SWORDS
+        Dice rolled_d1 = new Dice();
+        Dice rolled_d2 = new Dice();
+
+        rolled_d1.setDice(DiceState.PARROT);
+        rolled_d2.setDice(DiceState.PARROT);
+
+        hand.setHand(new Dice[]{ hand.getHand()[0],
+                hand.getHand()[1],
+                hand.getHand()[2],
+                hand.getHand()[3],
+                hand.getHand()[4],
+                hand.getHand()[5],
+                rolled_d1,
+                rolled_d2,});
+
+        Arrays.sort(hand.getHand(), new SortHelper());
+        hand.cleanUp();
+        System.out.println(hand.toString());
+
+
+        //PUT 5 PARROTS IN CHEST
+        TreasureChest tc = new TreasureChest();
+        hand.addToChest(tc, new int[]{0,1,2,3,4,5,6,7});
+        System.out.println(hand.toString() + "| CHEST : " + hand.toString(tc));
+
+        //REMOVE 2 DIAMONDS AND 1 COIN FROM CHEST
+        hand.removeFromChest(tc, new int[]{0,1,2});
+        System.out.println(hand.toString() + "| CHEST : " + hand.toString(tc));
+
+        //REROLL DICES
+        Dice rolled_k1 = new Dice();
+        Dice rolled_k2 = new Dice();
+        Dice rolled_k3 = new Dice();
+
+        rolled_k1.setDice(DiceState.SKULL);
+        rolled_k2.setDice(DiceState.COIN);
+        rolled_k3.setDice(DiceState.PARROT);
+
+        hand.setHand(new Dice[]{ rolled_k1,
+                rolled_k2,
+                rolled_k3,
+                hand.getHand()[3],
+                hand.getHand()[4],
+                hand.getHand()[5],
+                hand.getHand()[6],
+                hand.getHand()[7]});
+
+        Arrays.sort(hand.getHand(), new SortHelper());
+        hand.cleanUp();
+        System.out.println(hand.toString() + "| CHEST : " + hand.toString(tc));
+
+        hand.addToChest(tc, new int[]{0,1});
+        System.out.println(hand.toString() + "| CHEST : " + hand.toString(tc));
+
+        scorer.setFortune(tc);
+        scorer.count(hand.getChest(tc));
+        assertEquals(scorer.score(), 1100);
     }
 }
