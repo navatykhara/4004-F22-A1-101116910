@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 
 import static Dice.DiceState.COIN;
+import static Dice.DiceState.DIAMOND;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ScorerTest {
@@ -64,7 +65,7 @@ public class ScorerTest {
         Dice d7 = new Dice();
         Dice d8 = new Dice();
 
-        d1.setDice(DiceState.DIAMOND);
+        d1.setDice(DIAMOND);
         d2.setDice(DiceState.SKULL);
         d3.setDice(DiceState.SKULL);
         d4.setDice(DiceState.MONKEY);
@@ -409,7 +410,7 @@ public class ScorerTest {
         Dice d7 = new Dice();
         Dice d8 = new Dice();
 
-        d1.setDice(DiceState.DIAMOND);
+        d1.setDice(DIAMOND);
         d2.setDice(DiceState.SKULL);
         d3.setDice(DiceState.SKULL);
         d4.setDice(DiceState.MONKEY);
@@ -553,10 +554,10 @@ public class ScorerTest {
         Dice d7 = new Dice();
         Dice d8 = new Dice();
 
-        d1.setDice(DiceState.DIAMOND);
+        d1.setDice(DIAMOND);
         d2.setDice(DiceState.SKULL);
         d3.setDice(DiceState.SKULL);
-        d4.setDice(DiceState.DIAMOND);
+        d4.setDice(DIAMOND);
         d5.setDice(DiceState.MONKEY);
         d6.setDice(DiceState.PARROT);
         d7.setDice(DiceState.PARROT);
@@ -697,7 +698,7 @@ public class ScorerTest {
         Dice d7 = new Dice();
         Dice d8 = new Dice();
 
-        d1.setDice(DiceState.DIAMOND);
+        d1.setDice(DIAMOND);
         d2.setDice(DiceState.SKULL);
         d3.setDice(DiceState.SKULL);
         d4.setDice(DiceState.MONKEY);
@@ -744,6 +745,42 @@ public class ScorerTest {
         d6.setDice(COIN);
         d7.setDice(COIN);
         d8.setDice(COIN);
+
+        hand.setHand(new Dice[]{ d1,
+                d2,
+                d3,
+                d4,
+                d5,
+                d6,
+                d7,
+                d8});
+
+        scorer.setFortune(new Coin());
+        scorer.count(hand);
+        assertEquals(scorer.score(), 5400);
+    }
+    @Test
+    void testDiamondScoringBonusWithCoinFortune(){
+        Hand hand = new Hand();
+        Scorer scorer = new Scorer();
+
+        Dice d1 = new Dice();
+        Dice d2 = new Dice();
+        Dice d3 = new Dice();
+        Dice d4 = new Dice();
+        Dice d5 = new Dice();
+        Dice d6 = new Dice();
+        Dice d7 = new Dice();
+        Dice d8 = new Dice();
+
+        d1.setDice(DIAMOND);
+        d2.setDice(DIAMOND);
+        d3.setDice(DIAMOND);
+        d4.setDice(DIAMOND);
+        d5.setDice(DIAMOND);
+        d6.setDice(DIAMOND);
+        d7.setDice(DIAMOND);
+        d8.setDice(DIAMOND);
 
         hand.setHand(new Dice[]{ d1,
                 d2,
