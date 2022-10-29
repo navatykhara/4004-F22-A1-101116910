@@ -17,7 +17,6 @@ public class Player {
         total =0;
 
         hand = new Hand();
-        hand.initialize();
     }
 
     public int getScore() {
