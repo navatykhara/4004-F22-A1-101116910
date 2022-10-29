@@ -146,6 +146,10 @@ public class Game {
         if(p.getFortune() == null || !p.getFortune().getClass().equals(TreasureChest.class))
             return "Player " + p.getId() + " does not have the TREASURE CHEST fortune card.";
 
+        for(int i: req)
+            if(i < 0 || i > 7)
+                return "Player " + p.getId() + " has not provided valid input.";
+
         String temp = "";
         for(int i : req)
             temp += "[" +p.getHand().getChest(p.getFortune()).getHand()[i].getDice().toChar() + "]";
