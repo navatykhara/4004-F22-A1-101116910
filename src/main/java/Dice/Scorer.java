@@ -57,7 +57,7 @@ public class Scorer {
         }
 
         if(fortune != null && fortune.getClass().equals(SeaBattle.class))
-            if(freq.get(DiceState.SWORD) != null && freq.get(DiceState.SWORD) >=  ((SeaBattle) fortune).getSwords()) {
+            if(freq.get(DiceState.SWORD) != null && freq.get(DiceState.SWORD) >=  ((SeaBattle) fortune).getSwords() && isAlive) {
                 count += freq.get(DiceState.SWORD);
                 total += ((SeaBattle) fortune).getBonus();
             }else {
