@@ -143,6 +143,9 @@ public class Game {
     }
     public String removeFromChestForPlayer(Player p, int[] req) {
 
+        if(p.getFortune() == null || !p.getFortune().getClass().equals(TreasureChest.class))
+            return "Player " + p.getId() + " does not have the TREASURE CHEST fortune card.";
+
         String temp = "";
         for(int i : req)
             temp += "[" +p.getHand().getChest(p.getFortune()).getHand()[i].getDice().toChar() + "]";
