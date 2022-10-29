@@ -2,6 +2,8 @@ package Game;
 
 import Dice.Dice;
 import Dice.DiceState;
+import FortuneCards.Coin;
+import FortuneCards.Fortunes;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -70,7 +72,6 @@ public class GameTest {
 
         assertTrue(game.checkWinCondition());
     }
-
     @Test
     void checkWinConditionFalse(){
         Player p1 = new Player(1);
@@ -85,7 +86,6 @@ public class GameTest {
 
         assertFalse(game.checkWinCondition());
     }
-
     @Test
     void checkWinner(){
         Player p1 = new Player(1);
@@ -100,7 +100,6 @@ public class GameTest {
 
         assertEquals(game.checkWinner(), "Player " + p1.getId() + " won with " + p1.getTotal() + " points.");
     }
-
     @Test
     void checkWinnerTie(){
         Player p1 = new Player(1);
@@ -114,5 +113,14 @@ public class GameTest {
         p3.setTotal(1000);
 
         assertEquals(game.checkWinner(), "Player " + p1.getId() + " won with " + p1.getTotal() + " points.");
+    }
+    @Test
+    void drawFortuneForPlayer(){
+        Player p1 = new Player(1);
+
+        Game game = new Game(new Player[]{p1});
+
+        assertEquals(game.drawFortuneForPlayer(p1, new Coin()), "Player " + p1.getId() + " draws the COIN Fortune card.");
+
     }
 }
