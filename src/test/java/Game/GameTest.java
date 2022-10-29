@@ -157,7 +157,7 @@ public class GameTest {
 
         Game game = new Game(new Player[]{p1});
         game.rollDiceForPlayer(p1, d);
-        
+
         assertEquals(d, p1.getHand().getHand());
 
     }

@@ -1,6 +1,7 @@
 package Game;
 
 import Dice.Scorer;
+import Dice.Dice;
 import Dice.SortHelper;
 import FortuneCards.FortuneCards;
 import FortuneCards.Fortunes;
@@ -80,4 +81,17 @@ public class Game {
         msg += "Player " + p.getId() + " draws the " + p.getFortune().toString() + " Fortune card.";
         return msg;
     }
+    public String rollDiceForPlayer(Player p, int req[]){
+        String msg = "";
+        p.getHand().roll(req);
+        msg += "Player " + p.getId() + " rolls the dice and receives " + p.getHand().toString();
+        return msg;
+    }
+    public String rollDiceForPlayer(Player p, Dice[] hand){
+        String msg = "";
+        p.getHand().setHand(hand);
+        msg += "Player " + p.getId() + " rolls the dice and receives " + p.getHand().toString();
+        return msg;
+    }
+
 }
