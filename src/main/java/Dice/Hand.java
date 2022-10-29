@@ -158,7 +158,7 @@ public class Hand {
         if(fortune != null && fortune.getClass().equals(TreasureChest.class)){
 
             for(int i : h){
-                if((i < 0 || i > getChest(fortune).getHand().length-1) || hand[i] == null)
+                if((i < 0 || i > getChest(fortune).getHand().length-1))
                     break;
 
                 for(int j = 0; j < MAX_DICE; j++){
