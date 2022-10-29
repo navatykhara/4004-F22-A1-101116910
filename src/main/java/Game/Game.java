@@ -5,6 +5,7 @@ import Dice.Dice;
 import Dice.SortHelper;
 import FortuneCards.FortuneCards;
 import FortuneCards.Fortunes;
+import FortuneCards.Sorceress;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -91,6 +92,26 @@ public class Game {
         String msg = "";
         p.getHand().setHand(hand);
         msg += "Player " + p.getId() + " rolls the dice and receives " + p.getHand().toString();
+        return msg;
+    }
+    public String rollSkullForPlayer(Player p){
+        String msg = "";
+        if(p.getFortune().getClass().equals(Sorceress.class)) {
+            p.hand.rollSkull(p.getFortune());
+            msg += "Player " + p.getId() + " re-rolls the skull dice and receives " + p.getHand().toString();
+        }else {
+            msg += "Player " + p.getId() + " does not have the SORCERESS fortune card";
+        }
+        return msg;
+    }
+    public String rollSkullForPlayer(Player p, Dice d){
+        String msg = "";
+        if(p.getFortune().getClass().equals(Sorceress.class)) {
+            p.hand.rollSkull(p.getFortune(), d);
+            msg += "Player " + p.getId() + " re-rolls the skull dice and receives " + p.getHand().toString();
+        }else {
+            msg += "Player " + p.getId() + " does not have the SORCERESS fortune card";
+        }
         return msg;
     }
 
