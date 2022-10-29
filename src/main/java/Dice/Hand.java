@@ -33,7 +33,6 @@ public class Hand {
 
         Arrays.sort(hand, new SortHelper());
         cleanUp();
-        setOnSkullIsland();
     }
 
     public void setOnSkullIsland(){
