@@ -459,5 +459,100 @@ public class Part2 {
         scorer.count(hand.getChest(tc));
         assertEquals(scorer.score(), 1100);
     }
-    
+    @Test
+    void row94(){
+        Player p1 = new Player(1);
+
+        Hand hand = new Hand();
+        Scorer scorer = new Scorer();
+
+        Dice d1 = new Dice();
+        Dice d2 = new Dice();
+        Dice d3 = new Dice();
+        Dice d4 = new Dice();
+        Dice d5 = new Dice();
+        Dice d6 = new Dice();
+        Dice d7 = new Dice();
+        Dice d8 = new Dice();
+
+        d1.setDice(DiceState.SKULL);
+        d2.setDice(DiceState.SKULL);
+        d3.setDice(DiceState.PARROT);
+        d4.setDice(DiceState.PARROT);
+        d5.setDice(DiceState.PARROT);
+        d6.setDice(DiceState.COIN);
+        d7.setDice(DiceState.COIN);
+        d8.setDice(DiceState.COIN);
+
+        hand.setHand(new Dice[]{ d1,
+                d2,
+                d3,
+                d4,
+                d5,
+                d6,
+                d7,
+                d8});
+
+        Arrays.sort(hand.getHand(), new SortHelper());
+        System.out.println(hand.toString());
+        p1.getHand().setHand(hand.getHand());
+        p1.getHand().cleanUp();
+
+        //PUT 3 COINS IN CHEST
+        TreasureChest tc = new TreasureChest();
+        p1.getHand().addToChest(tc, new int[]{0,1,2});
+        System.out.println(p1.getHand().toString() + "| CHEST : " + p1.getHand().toString(tc));
+
+        //REROLL 3 PARROTS
+        Dice rolled_d1 = new Dice();
+        Dice rolled_d2 = new Dice();
+        Dice rolled_d3 = new Dice();
+
+        rolled_d1.setDice(DiceState.DIAMOND);
+        rolled_d2.setDice(DiceState.DIAMOND);
+        rolled_d3.setDice(DiceState.COIN);
+
+        p1.getHand().setHand(new Dice[]{ rolled_d1,
+                rolled_d2,
+                rolled_d3,
+                hand.getHand()[3],
+                hand.getHand()[4],
+                hand.getHand()[5],
+                hand.getHand()[6],
+                hand.getHand()[7],});
+
+        Arrays.sort(p1.getHand().getHand(), new SortHelper());
+        p1.getHand().cleanUp();
+        System.out.println(p1.getHand().toString() + "| CHEST : " + p1.getHand().toString(tc));
+
+        //PUT 3 COINS IN CHEST
+        p1.getHand().addToChest(tc, new int[]{2});
+        System.out.println(p1.getHand().toString() + "| CHEST : " + p1.getHand().toString(tc));
+
+        //REROLL 3 PARROTS
+        Dice rolled_k1 = new Dice();
+        Dice rolled_k2 = new Dice();
+
+        rolled_k1.setDice(DiceState.SKULL);
+        rolled_k2.setDice(DiceState.COIN);
+
+        p1.getHand().setHand(new Dice[]{ rolled_k1,
+                rolled_k2,
+                hand.getHand()[2],
+                hand.getHand()[3],
+                hand.getHand()[4],
+                hand.getHand()[5],
+                hand.getHand()[6],
+                hand.getHand()[7],});
+        Arrays.sort(p1.getHand().getHand(), new SortHelper());
+        p1.getHand().cleanUp();
+        System.out.println(p1.getHand().toString() + "| CHEST : " + p1.getHand().toString(tc));
+
+        scorer.setFortune(tc);
+        scorer.count(hand.getChest(tc));
+        assertEquals(scorer.score(), 600);
+
+        System.out.println("Player " + p1.getId() + " has died.");
+    }
+
 }
