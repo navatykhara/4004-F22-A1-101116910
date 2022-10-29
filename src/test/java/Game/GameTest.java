@@ -5,6 +5,7 @@ import Dice.DiceState;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GameTest {
 
@@ -52,8 +53,24 @@ public class GameTest {
                 d6,
                 d7,
                 d8});
-        
+
         assertEquals(game.getScoreForPlayer(p), "Player " + p.getId() + " scores " + p.getScore() + " points.");
 
     }
+    @Test
+    void checkWinCondition(){
+        Player p1 = new Player(1);
+        Player p2 = new Player(2);
+        Player p3 = new Player(3);
+
+        Game game = new Game(new Player[]{p1, p2, p3});
+
+        p1.setTotal(3000);
+        p2.setScore(2000);
+        p3.setTotal(1000);
+
+        assertTrue(game.checkWinCondition());
+    }
+
+    
 }
