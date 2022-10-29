@@ -2,6 +2,8 @@ package Game;
 
 import Dice.Scorer;
 import Dice.SortHelper;
+import FortuneCards.FortuneCards;
+import FortuneCards.Fortunes;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,12 +14,14 @@ public class Game {
 
     Player[] players;
     Scorer scorer;
-
+    Fortunes fortuneDeck;
 
     public Game(Player[] p){
 
         players = p;
         scorer = new Scorer();
+        fortuneDeck = new Fortunes();
+
 
     }
 
@@ -46,7 +50,6 @@ public class Game {
         }
         return false;
     }
-
     public String checkWinner(){
         String msg = "";
         ArrayList<Player> sort = new ArrayList<>();
@@ -65,5 +68,16 @@ public class Game {
 
         return msg;
     }
-
+    public String drawFortuneForPlayer(Player p){
+        String msg = "";
+        p.setFortune(fortuneDeck.getFortune());
+        msg += "Player " + p.getId() + " draws the " + p.getFortune().toString() + " Fortune card.";
+        return msg;
+    }
+    public String drawFortuneForPlayer(Player p, FortuneCards fortune){
+        String msg = "";
+        p.setFortune(fortune);
+        msg += "Player " + p.getId() + " draws the " + p.getFortune().toString() + " Fortune card.";
+        return msg;
+    }
 }
