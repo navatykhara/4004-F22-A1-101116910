@@ -218,7 +218,7 @@ public class Part2 {
         assertEquals(scorer.score(), 1000);
     }
     @Test
-    void row81(){
+    void row82(){
         Hand hand = new Hand();
         Scorer scorer = new Scorer();
 
@@ -258,7 +258,7 @@ public class Part2 {
         assertEquals(scorer.score(), 1100);
     }
     @Test
-    void row82(){
+    void row83(){
         Hand hand = new Hand();
         Scorer scorer = new Scorer();
 
@@ -316,4 +316,5 @@ public class Part2 {
         scorer.count(hand);
         assertEquals(scorer.score(), 1700);
     }
+   
 }
