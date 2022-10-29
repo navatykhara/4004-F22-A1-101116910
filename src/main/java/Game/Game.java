@@ -159,5 +159,15 @@ public class Game {
         return "Player " + p.getId() + " removes " + temp + " from the TREASURE CHEST resulting in " + p.getHand().toString(p.getFortune());
 
     }
+    public String offerChoicesForPlayer(){
+        String msg = "\n";
+        msg += "Enter the corresponding integers to pick a choice \n" +
+                "\t (1) Reroll dice \n" +
+                "\t (2) Reroll skull \n" +
+                "\t (3) Add to chest \n" +
+                "\t (4) Remove from chest \n" +
+                "\t (5) End turn \n";
+        return msg;
+    }
 }
 
