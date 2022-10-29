@@ -548,6 +548,16 @@ public class GameTest {
 
         assertEquals(game.removeFromChestForPlayer(p1, new int[]{-1, 8}), "Player 1 has not provided valid input.");
     }
+    @Test
+    void offerChoicesForPlayer(){
+        Game game = new Game(new Player[]{});
+        assertEquals(game.offerChoicesForPlayer(), "\nEnter the corresponding integers to pick a choice \n" +
+                "\t (1) Reroll dice \n" +
+                "\t (2) Reroll skull \n" +
+                "\t (3) Add to chest \n" +
+                "\t (4) Remove from chest \n" +
+                "\t (5) End turn \n");
+    }
 
-    
+
 }
