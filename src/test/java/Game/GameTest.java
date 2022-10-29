@@ -98,7 +98,20 @@ public class GameTest {
         p2.setTotal(2000);
         p3.setTotal(1000);
 
-        System.out.println(game.checkWinner());
+        assertEquals(game.checkWinner(), "Player " + p1.getId() + " won with " + p1.getTotal() + " points.");
+    }
+
+    @Test
+    void checkWinnerTie(){
+        Player p1 = new Player(1);
+        Player p2 = new Player(2);
+        Player p3 = new Player(3);
+
+        Game game = new Game(new Player[]{p1, p2, p3});
+
+        p1.setTotal(3000);
+        p2.setTotal(3000);
+        p3.setTotal(1000);
 
         assertEquals(game.checkWinner(), "Player " + p1.getId() + " won with " + p1.getTotal() + " points.");
     }
