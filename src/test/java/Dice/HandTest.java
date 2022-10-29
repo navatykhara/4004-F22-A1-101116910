@@ -471,7 +471,7 @@ class HandTest {
 
         TreasureChest tc = new TreasureChest();
         hand.addToChest(tc, new int[] {0, 1});
-        
+
         int count = 0;
         for(Dice d: hand.getChest(tc).getHand())
             if(d != null)
@@ -520,7 +520,8 @@ class HandTest {
 
         int count = 0;
         for(Dice d: hand.getChest(tc).getHand())
-            count++;
+            if(d != null)
+                count++;
 
         assertEquals(count, 0);
 
