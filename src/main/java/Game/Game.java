@@ -125,6 +125,9 @@ public class Game {
     }
     public String addToChestForPlayer(Player p, int[] req) {
 
+        if(p.getFortune() == null || !p.getFortune().getClass().equals(TreasureChest.class))
+            return "Player " + p.getId() + " does not have the TREASURE CHEST fortune card.";
+
         p.getHand().addToChest(p.getFortune(), req);
 
         String temp = "";
