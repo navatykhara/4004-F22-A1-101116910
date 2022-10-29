@@ -42,11 +42,15 @@ public class Game {
                 scorer.setFortune(players[i].getFortune());
 
                 players[i].getHand().initialize();
+                scorer.setAlive(true);
 
                 System.out.println(getScoreForPlayer(players[i]));
 
                 while(true) {
-                    System.out.println(players[i].getHand().toString());
+
+                    System.out.println("HAND: " + players[i].getHand().toString());
+                    if(players[i].getFortune().getClass().equals(TreasureChest.class))
+                        System.out.println("TREASURE CHEST : " + players[i].getHand().getChest(players[i].getFortune()).toString(players[i].getFortune()));
 
                     System.out.println(offerChoicesForPlayer());
 
@@ -116,11 +120,7 @@ public class Game {
 
         }while(!checkWinCondition() || winningRound > 0);
 
-        for(Player p : players){
-            if(p.getTotal() >= 3000) {
-                System.out.println("Player " + p.getId() + " won with " + p.getTotal() + " points.");
-            }
-        }
+        System.out.println(checkWinner());
 
     }
     public String getScoreBoard(){

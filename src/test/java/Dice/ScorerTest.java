@@ -683,7 +683,6 @@ public class ScorerTest {
         scorer.count(hand);
         assertEquals(scorer.score(), -300);
     }
-
     @Test
     void deadScoring(){
         Hand hand = new Hand();
