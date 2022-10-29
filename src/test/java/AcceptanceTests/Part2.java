@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class Part2 {
 
@@ -771,5 +772,50 @@ public class Part2 {
         scorer.setFortune(new MonkeyBusiness());
         scorer.count(hand);
         assertEquals(scorer.score(), 1200);
+    }
+    @Test
+    void row114(){
+        Player p1 = new Player(1);
+        Hand hand = new Hand();
+        Scorer scorer = new Scorer();
+
+        Dice d1 = new Dice();
+        Dice d2 = new Dice();
+        Dice d3 = new Dice();
+        Dice d4 = new Dice();
+        Dice d5 = new Dice();
+        Dice d6 = new Dice();
+        Dice d7 = new Dice();
+        Dice d8 = new Dice();
+
+        d1.setDice(DiceState.MONKEY);
+        d2.setDice(DiceState.MONKEY);
+        d3.setDice(DiceState.MONKEY);
+        d4.setDice(DiceState.MONKEY);
+        d5.setDice(DiceState.SKULL);
+        d6.setDice(DiceState.SKULL);
+        d7.setDice(DiceState.SKULL);
+        d8.setDice(DiceState.SWORD);
+
+        hand.setHand(new Dice[]{ d1,
+                d2,
+                d3,
+                d4,
+                d5,
+                d6,
+                d7,
+                d8});
+
+        Arrays.sort(hand.getHand(), new SortHelper());
+        p1.getHand().setHand(hand.getHand());
+        p1.getHand().cleanUp();
+        System.out.println(hand.toString());
+
+        scorer.setAlive(p1.isAlive());
+        scorer.setFortune(new SeaBattle(2));
+        scorer.count(hand);
+
+        assertFalse(p1.isAlive());
+        assertEquals(scorer.score(), -300);
     }
 }
