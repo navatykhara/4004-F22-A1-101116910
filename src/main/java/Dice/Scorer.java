@@ -34,7 +34,7 @@ public class Scorer {
     public int score(){
         int total = 0;
         int count = 0;
-        int max_bonus = (fortune != null && (fortune.getClass().equals(Coin.class) || fortune.getClass().equals(Coin.class))) ? 9 : 8;
+        int max_bonus = (fortune != null && (fortune.getClass().equals(Coin.class) || fortune.getClass().equals(Diamond.class))) ? 9 : 8;
 
         for(DiceState d : freq.keySet()){
 
