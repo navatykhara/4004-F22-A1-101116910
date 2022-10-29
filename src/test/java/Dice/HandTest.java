@@ -566,7 +566,8 @@ class HandTest {
 
         int count = 0;
         for(Dice d: hand.getChest(tc).getHand())
-            count++;
+            if(d != null)
+                count++;
 
         assertEquals(count, 0);
 
