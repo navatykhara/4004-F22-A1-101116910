@@ -31,12 +31,12 @@ public class Hand {
 
         graveyard = new ArrayList<>();
 
+        Arrays.sort(hand, new SortHelper());
+        cleanUp();
         setOnSkullIsland();
     }
 
     public void setOnSkullIsland(){
-        Arrays.sort(hand, new SortHelper());
-        cleanUp();
         int count = 0;
         for(Dice d : graveyard)
             if(d != null && d.getDice().equals(DiceState.SKULL))
