@@ -149,8 +149,17 @@ public class Hand {
             Arrays.sort(((TreasureChest)fortune).getHand().getHand(), new SortHelper());
             cleanUp();
 
+            Dice[] temp = ((TreasureChest)fortune).getHand().getHand();
 
-            ((TreasureChest) fortune).getHand().setHand(toAdd.toArray(new Dice[8]));
+            for(Dice d : toAdd) {
+                for (int i = 0; i < temp.length; i++)
+                    if (temp[i] == null) {
+                        temp[i] = d;
+                        break;
+                    }
+            }
+            ((TreasureChest) fortune).getHand().setHand(temp);
+            Arrays.sort(temp, new SortHelper());
         }
 
     }
