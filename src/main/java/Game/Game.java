@@ -6,6 +6,7 @@ import Dice.SortHelper;
 import FortuneCards.FortuneCards;
 import FortuneCards.Fortunes;
 import FortuneCards.Sorceress;
+import FortuneCards.TreasureChest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -122,6 +123,16 @@ public class Game {
         }
         return msg;
     }
+    public String addToChestForPlayer(Player p, int[] req) {
 
+        p.getHand().addToChest(p.getFortune(), req);
+
+        String temp = "";
+        for(int i : req)
+            temp += "[" +p.getHand().getHand()[i].getDice().toChar() + "]";
+
+        return "Player " + p.getId() + " adds " + temp + " to the TREASURE CHEST resulting in " + p.getHand().toString(p.getFortune());
+
+    }
 }
 

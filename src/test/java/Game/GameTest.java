@@ -343,7 +343,7 @@ public class GameTest {
         p1.setFortune(new TreasureChest());
 
         Game game = new Game(new Player[]{p1});
-        
+
         assertEquals(game.addToChestForPlayer(p1,new int[]{0,1}), "Player 1 adds [P][P] to the TREASURE CHEST resulting in [P][P]");
     }
 }
