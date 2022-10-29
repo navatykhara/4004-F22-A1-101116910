@@ -34,15 +34,17 @@ public class Scorer {
     public int score(){
         int total = 0;
         int count = 0;
+        int max_bonus = (fortune != null && (fortune.getClass().equals(Coin.class) || fortune.getClass().equals(Coin.class))) ? 9 : 8;
 
         for(DiceState d : freq.keySet()){
 
             if((fortune != null && fortune.getClass().equals(MonkeyBusiness.class)) && (d == DiceState.MONKEY || d == DiceState.PARROT)){
                 continue;
             }
+            if(rule.containsKey(freq.get(d) > 8 ? 8 : freq.get(d))) {
 
-            if(rule.containsKey(freq.get(d))) {
-                total += rule.get(freq.get(d));
+                total += rule.get(freq.get(d) > 8 ? 8 : freq.get(d));
+
                 if(!(d == DiceState.COIN || d == DiceState.DIAMOND)){
                     count += freq.get(d);
                 }
@@ -54,7 +56,7 @@ public class Scorer {
             }
         }
 
-        if(count == 8){
+        if(count == max_bonus){
             total += 500;
         }
 
