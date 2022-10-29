@@ -156,9 +156,11 @@ public class GameTest {
                 d8};
 
         Game game = new Game(new Player[]{p1});
-        game.rollDiceForPlayer(p1, d);
+        String temp = game.rollDiceForPlayer(p1, d);
 
         assertEquals(d, p1.getHand().getHand());
+        assertEquals(temp, "Player 1 rolls the dice and receives [P][P][P][P][P][P][P][P]\t|\t");
+
 
     }
 }
