@@ -817,6 +817,49 @@ public class Part2 {
 
     }
     @Test
+    void row107(){
+        Player p1 = new Player(1);
+
+        Hand hand = new Hand();
+
+        Dice d1 = new Dice();
+        Dice d2 = new Dice();
+        Dice d3 = new Dice();
+        Dice d4 = new Dice();
+        Dice d5 = new Dice();
+        Dice d6 = new Dice();
+        Dice d7 = new Dice();
+        Dice d8 = new Dice();
+
+        d1.setDice(DiceState.SKULL);
+        d2.setDice(DiceState.SKULL);
+        d3.setDice(DiceState.SWORD);
+        d4.setDice(DiceState.SWORD);
+        d5.setDice(DiceState.SWORD);
+        d6.setDice(DiceState.SWORD);
+        d7.setDice(DiceState.SWORD);
+        d8.setDice(DiceState.SWORD);
+
+        hand.setHand(new Dice[]{ d1,
+                d2,
+                d3,
+                d4,
+                d5,
+                d6,
+                d7,
+                d8});
+
+        p1.getHand().setHand(hand.getHand());
+        Arrays.sort(p1.getHand().getHand(), new SortHelper());
+        p1.getHand().cleanUp();
+        System.out.println(p1.getHand().toString());
+
+        p1.setFortune(new Skulls(1));
+        assertFalse(p1.isAlive());
+
+
+    }
+    @Test
     void row114(){
         Player p1 = new Player(1);
         Hand hand = new Hand();
