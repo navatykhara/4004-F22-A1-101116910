@@ -132,11 +132,11 @@ public class Game {
             if(i < 0 || i > 7)
                 return "Player " + p.getId() + " has not provided valid input.";
 
-        p.getHand().addToChest(p.getFortune(), req);
-
         String temp = "";
         for(int i : req)
             temp += "[" +p.getHand().getHand()[i].getDice().toChar() + "]";
+
+        p.getHand().addToChest(p.getFortune(), req);
 
         return "Player " + p.getId() + " adds " + temp + " to the TREASURE CHEST resulting in " + p.getHand().toString(p.getFortune());
 
