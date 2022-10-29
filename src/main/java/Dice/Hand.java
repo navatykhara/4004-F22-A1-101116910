@@ -146,6 +146,7 @@ public class Hand {
             }
 
             Arrays.sort(hand, new SortHelper());
+            Arrays.sort(((TreasureChest)fortune).getHand().getHand(), new SortHelper());
             cleanUp();
 
 
@@ -171,6 +172,7 @@ public class Hand {
             }
 
             Arrays.sort(hand, new SortHelper());
+            Arrays.sort(((TreasureChest)fortune).getHand().getHand(), new SortHelper());
             cleanUp();
         }
     }
