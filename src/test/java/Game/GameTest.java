@@ -306,7 +306,6 @@ public class GameTest {
         game.rollSkullForPlayer(p1, dice);
         assertEquals(game.rollSkullForPlayer(p1, dice), "Player 1 has already rerolled a skull dice.");
     }
-
     @Test
     void addToChestForPlayer(){
         Player p1 = new Player(1);
@@ -345,5 +344,44 @@ public class GameTest {
         Game game = new Game(new Player[]{p1});
 
         assertEquals(game.addToChestForPlayer(p1,new int[]{0,1}), "Player 1 adds [P][P] to the TREASURE CHEST resulting in [P][P]");
+    }
+    @Test
+    void addToChestForPlayerNonTCFortune(){
+        Player p1 = new Player(1);
+
+        Dice d1 = new Dice();
+        Dice d2 = new Dice();
+        Dice d3 = new Dice();
+        Dice d4 = new Dice();
+        Dice d5 = new Dice();
+        Dice d6 = new Dice();
+        Dice d7 = new Dice();
+        Dice d8 = new Dice();
+
+        d1.setDice(DiceState.PARROT);
+        d2.setDice(DiceState.PARROT);
+        d3.setDice(DiceState.PARROT);
+        d4.setDice(DiceState.PARROT);
+        d5.setDice(DiceState.PARROT);
+        d6.setDice(DiceState.PARROT);
+        d7.setDice(DiceState.PARROT);
+        d8.setDice(DiceState.PARROT);
+
+        Dice[] d = new Dice[]{ d1,
+                d2,
+                d3,
+                d4,
+                d5,
+                d6,
+                d7,
+                d8};
+
+        p1.getHand().setHand(d);
+        p1.getHand().cleanUp();
+        p1.setFortune(new Coin());
+
+        Game game = new Game(new Player[]{p1});
+
+        assertEquals(game.addToChestForPlayer(p1,new int[]{0,1}), "Player 1 does not have the TREASURE CHEST fortune card.");
     }
 }
