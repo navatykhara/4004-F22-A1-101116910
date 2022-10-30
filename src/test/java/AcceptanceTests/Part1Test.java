@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class Part1 {
+class Part1Test {
 
     @Test
     void row45(){

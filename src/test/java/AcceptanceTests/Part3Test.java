@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class Part3 {
+public class Part3Test {
 
     @Test
     void row132(){
