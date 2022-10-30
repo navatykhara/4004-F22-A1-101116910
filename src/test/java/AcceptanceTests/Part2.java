@@ -319,6 +319,7 @@ public class Part2 {
     }
     @Test
     void row84(){
+        Player p1 = new Player(1);
         Hand hand = new Hand();
         Scorer scorer = new Scorer();
 
@@ -349,13 +350,15 @@ public class Part2 {
                 d7,
                 d8});
 
-        Arrays.sort(hand.getHand(), new SortHelper());
-        hand.cleanUp();
-        System.out.println(hand.toString());
+        p1.getHand().setHand(hand.getHand());
+        Arrays.sort(p1.getHand().getHand(), new SortHelper());
+        p1.getHand().cleanUp();
+        System.out.println(p1.getHand().toString());
 
         scorer.setAlive(false);
         scorer.setFortune(new MonkeyBusiness());
-        scorer.count(hand);
+        scorer.count(p1.getHand());
+        assertFalse(p1.isAlive());
         assertEquals(scorer.score(), 0);
     }
     @Test
