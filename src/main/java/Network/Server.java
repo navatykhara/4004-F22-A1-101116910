@@ -143,7 +143,6 @@ public class Server {
                             }
 
                             game.getScorer().setFortune(playerObjectList[i].getFortune());
-                            playerObjectList[0].setTotal(4000);
                             playerObjectList[i].getHand().initialize();
                             game.getScorer().setAlive(playerObjectList[i].isAlive());
 
