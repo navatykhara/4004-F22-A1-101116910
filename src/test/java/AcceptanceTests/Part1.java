@@ -186,6 +186,7 @@ public class Part1 {
     }
     @Test
     void row49(){
+        Player p1 = new Player(1);
         Hand hand = new Hand();
         Scorer scorer = new Scorer();
 
@@ -216,10 +217,10 @@ public class Part1 {
                 d6,
                 d7,
                 d8});
-
-        Arrays.sort(hand.getHand(), new SortHelper());
-        hand.cleanUp();
-        System.out.println(hand.toString());
+        p1.getHand().setHand(hand.getHand());
+        Arrays.sort( p1.getHand().getHand(), new SortHelper());
+        p1.getHand().cleanUp();
+        System.out.println( p1.getHand().toString());
 
         Dice rolled_d1 = new Dice();
         Dice rolled_d2 = new Dice();
@@ -229,18 +230,18 @@ public class Part1 {
         rolled_d2.setDice(DiceState.MONKEY);
         rolled_d3.setDice(DiceState.MONKEY);
 
-        hand.setHand(new Dice[]{ hand.getHand()[0],
-                hand.getHand()[1],
-                hand.getHand()[2],
-                hand.getHand()[3],
+        p1.getHand().setHand(new Dice[]{  p1.getHand().getHand()[0],
+                p1.getHand().getHand()[1],
+                p1.getHand().getHand()[2],
+                p1.getHand().getHand()[3],
                 rolled_d1,
                 rolled_d2,
                 rolled_d3,
-                null});
+                p1.getHand().getHand()[7]});
 
-        Arrays.sort(hand.getHand(), new SortHelper());
-        hand.cleanUp();
-        System.out.println(hand.toString());
+        Arrays.sort( p1.getHand().getHand(), new SortHelper());
+        p1.getHand().cleanUp();
+        System.out.println( p1.getHand().toString());
 
         Dice rolled_k1 = new Dice();
         Dice rolled_k2 = new Dice();
@@ -248,19 +249,20 @@ public class Part1 {
         rolled_k1.setDice(DiceState.SKULL);
         rolled_k2.setDice(DiceState.MONKEY);
 
-        hand.setHand(new Dice[]{ rolled_k1,
+        p1.getHand().setHand(new Dice[]{ rolled_k1,
                 rolled_k2,
-                hand.getHand()[2],
-                hand.getHand()[3],
-                hand.getHand()[4],
-                hand.getHand()[5],
-                hand.getHand()[6],
-                null});
+                p1.getHand().getHand()[2],
+                p1.getHand().getHand()[3],
+                p1.getHand().getHand()[4],
+                p1.getHand().getHand()[5],
+                p1.getHand().getHand()[6],
+                p1.getHand().getHand()[7]});
 
-        Arrays.sort(hand.getHand(), new SortHelper());
-        hand.cleanUp();
-        System.out.println(hand.toString());
+        Arrays.sort( p1.getHand().getHand(), new SortHelper());
+        p1.getHand().cleanUp();
+        System.out.println( p1.getHand().toString());
 
+        assertFalse(p1.isAlive());
         scorer.setAlive(false);
     }
     @Test
