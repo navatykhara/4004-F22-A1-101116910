@@ -3,10 +3,7 @@ package Game;
 import Dice.Scorer;
 import Dice.Dice;
 import Dice.SortHelper;
-import FortuneCards.FortuneCards;
-import FortuneCards.Fortunes;
-import FortuneCards.Sorceress;
-import FortuneCards.TreasureChest;
+import FortuneCards.*;
 
 import java.util.*;
 
@@ -123,6 +120,12 @@ public class Game {
         System.out.println(checkWinner());
 
     }
+    public Fortunes getFortuneDeck(){
+        return fortuneDeck;
+    }
+    public Scorer getScorer(){
+        return scorer;
+    }
     public String getScoreBoard(){
         String msg = "|";
 
@@ -134,10 +137,17 @@ public class Game {
     }
     public String getScoreForPlayer(Player p){
         String msg = "";
-        scorer.count(p.getHand());
-        int score = scorer.score();
-        p.setScore(score);
-        msg += "Player " + p.getId() + " scores " + score + " points.";
+        if(p.getFortune() != null && p.getFortune().getClass().equals(TreasureChest.class)) {
+            scorer.count(p.getHand().getChest(p.getFortune()));
+            int score = scorer.score();
+            p.setScore(score);
+            msg += "Player " + p.getId() + " scores " + score + " points.";
+        }else{
+            scorer.count(p.getHand());
+            int score = scorer.score();
+            p.setScore(score);
+            msg += "Player " + p.getId() + " scores " + score + " points.";
+        }
         return msg;
     }
     public boolean checkWinCondition(){
@@ -169,13 +179,23 @@ public class Game {
     public String drawFortuneForPlayer(Player p){
         String msg = "";
         p.setFortune(fortuneDeck.getFortune());
-        msg += "Player " + p.getId() + " draws the " + p.getFortune().toString() + " Fortune card.";
+        String addon = "";
+        if(p.getFortune().getClass().equals(Skulls.class))
+            addon += "=" + ((Skulls) p.getFortune()).getSkulls();
+        if(p.getFortune().getClass().equals(SeaBattle.class))
+            addon += "=" + ((SeaBattle) p.getFortune()).getSwords();
+        msg += "Player " + p.getId() + " draws the " + p.getFortune().toString() + addon + " Fortune card.";
         return msg;
     }
     public String drawFortuneForPlayer(Player p, FortuneCards fortune){
         String msg = "";
         p.setFortune(fortune);
-        msg += "Player " + p.getId() + " draws the " + p.getFortune().toString() + " Fortune card.";
+        String addon = "";
+        if(fortune.getClass().equals(Skulls.class))
+            addon += "=" + ((Skulls) fortune).getSkulls();
+        if(fortune.getClass().equals(SeaBattle.class))
+            addon += "=" + ((SeaBattle) fortune).getSwords();
+        msg += "Player " + p.getId() + " draws the " + p.getFortune().toString() + addon + " Fortune card.";
         return msg;
     }
     public String rollDiceForPlayer(Player p, int req[]){
@@ -187,6 +207,7 @@ public class Game {
     public String rollDiceForPlayer(Player p, Dice[] hand){
         String msg = "";
         p.getHand().setHand(hand);
+        System.out.println(p.getHand().toString());
         msg += "Player " + p.getId() + " rolls the dice and receives " + p.getHand().toString();
         return msg;
     }
