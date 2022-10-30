@@ -3,7 +3,7 @@ package Suites;
 import org.junit.platform.suite.api.SelectPackages;
 import org.junit.platform.suite.api.Suite;
 
-@SelectPackages({"Dice", "FortuneCards", "Game"})
+@SelectPackages({"Dice", "FortuneCards", "Game", "Part1", "Part2"})
 @Suite
-public class UTestSuite {
+public class TestSuite {
 }
