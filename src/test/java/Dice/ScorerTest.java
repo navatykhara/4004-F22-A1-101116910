@@ -720,7 +720,6 @@ public class ScorerTest {
         assertEquals(scorer.score(), 0);
 
     }
-
     @Test
     void testCoinScoringBonusWithCoinFortune(){
         Hand hand = new Hand();
