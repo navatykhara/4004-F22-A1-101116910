@@ -5,8 +5,7 @@ import FortuneCards.*;
 import Game.*;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class Part3 {
 
@@ -125,4 +124,5 @@ public class Part3 {
         assertEquals(game.checkWinner(), "Player 1 won with 4000 points.");
 
     }
+
 }

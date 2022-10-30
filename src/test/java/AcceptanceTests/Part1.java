@@ -9,8 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class Part1 {
 
@@ -48,13 +47,17 @@ public class Part1 {
                 d7,
                 d8});
 
-        Arrays.sort(hand.getHand(), new SortHelper());
-        hand.cleanUp();
+        p1.getHand().setHand(hand.getHand());
+        Arrays.sort(p1.getHand().getHand(), new SortHelper());
+        p1.getHand().cleanUp();
 
-        System.out.println(hand.toString());
+
+        System.out.println(p1.getHand().toString());
 
         scorer.setAlive(false);
-        scorer.count(hand);
+        scorer.count(p1.getHand());
+
+        assertFalse(p1.isAlive());
         assertEquals(scorer.score(), 0);
     }
     @Test
