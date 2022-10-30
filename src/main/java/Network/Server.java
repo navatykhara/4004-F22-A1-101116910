@@ -131,10 +131,12 @@ public class Server {
 
                         for(int i = 0; i < playerObjectList.length; i++) {
 
+                            System.out.println(game.getScoreBoard());
                             for(int j = 0; j < 3; j++) {
                                 players[j].sendToClient(game.getScoreBoard());
                             }
 
+                            System.out.println("It is Player " + playerObjectList[i].getId() + "'s turn.");
                             for(int j = 0; j < 3; j++) {
                                 players[j].sendToClient("It is Player " + playerObjectList[i].getId() + "'s turn.");
                                 if(j+1 == playerObjectList[i].getId())
@@ -149,12 +151,16 @@ public class Server {
                             //Main Game Loop
                             while(true){
 
-                                if(playerObjectList[i].getFortune().getClass().equals(TreasureChest.class))
+                                if(playerObjectList[i].getFortune().getClass().equals(TreasureChest.class)) {
+                                    System.out.println("Player " + playerObjectList[i].getId() + "'s hand = " + playerObjectList[i].getHand().toString() + " | " + playerObjectList[i].getHand().getChest(playerObjectList[i].getFortune()).toString(playerObjectList[i].getFortune()));
                                     players[i].sendToClient("Player " + playerObjectList[i].getId() + "'s hand = " + playerObjectList[i].getHand().toString() + " | " + playerObjectList[i].getHand().getChest(playerObjectList[i].getFortune()).toString(playerObjectList[i].getFortune()));
-                                else
+                                }else {
+                                    System.out.println("Player " + playerObjectList[i].getId() + "'s hand = " + playerObjectList[i].getHand().toString());
                                     players[i].sendToClient("Player " + playerObjectList[i].getId() + "'s hand = " + playerObjectList[i].getHand().toString());
+                                }
 
                                 if(!playerObjectList[i].isAlive()){
+                                    System.out.println("Player " + playerObjectList[i].getId() + " has died.");
                                     players[i].sendToClient("Player " + playerObjectList[i].getId() + " has died.");
                                     game.getScorer().setAlive(false);
                                     game.getScoreForPlayer(playerObjectList[i]);
@@ -162,7 +168,9 @@ public class Server {
                                     break;
                                 }
 
-                                players[i].sendToClient(game.getScoreForPlayer(playerObjectList[i]));
+                                String scoreTemp = game.getScoreForPlayer(playerObjectList[i]);
+                                System.out.println(scoreTemp);
+                                players[i].sendToClient(scoreTemp);
 
                                 players[i].sendToClient(game.offerChoicesForPlayer());
 
@@ -177,10 +185,14 @@ public class Server {
                                         int[] temp = new int [input.length()];
                                         for(int k = 0; k < temp.length; k++)
                                             temp[k] = Integer.parseInt(input, k, k+1,10);
-                                        players[i].sendToClient(game.rollDiceForPlayer(playerObjectList[i], temp));
+                                        String rollTemp = game.rollDiceForPlayer(playerObjectList[i], temp);
+                                        System.out.println(rollTemp);
+                                        players[i].sendToClient(rollTemp);
                                         break;
                                     case 2:
-                                        players[i].sendToClient(game.rollSkullForPlayer(playerObjectList[i]));
+                                        String skullTemp = game.rollSkullForPlayer(playerObjectList[i]);
+                                        System.out.print(skullTemp);
+                                        players[i].sendToClient(skullTemp);
                                         break;
                                     case 3:
                                         players[i].sendToClient("Choose the dice index you wish to add to treasure chest (0-7) [no spaces]");
@@ -188,7 +200,9 @@ public class Server {
                                         temp = new int [input.length()];
                                         for(int k = 0; k < temp.length; k++)
                                             temp[k] = Integer.parseInt(input, k, k+1,10);
-                                        players[i].sendToClient(game.addToChestForPlayer(playerObjectList[i], temp));
+                                        String chestTemp = game.addToChestForPlayer(playerObjectList[i], temp);
+                                        System.out.println(chestTemp);
+                                        players[i].sendToClient(chestTemp);
                                         break;
                                     case 4:
                                         players[i].sendToClient("Choose the dice index you wish to remove from treasure chest (0-7) [no spaces]");
@@ -196,9 +210,11 @@ public class Server {
                                         temp = new int [input.length()];
                                         for(int k = 0; k < temp.length; k++)
                                             temp[k] = Integer.parseInt(input, k, k+1,10);
-                                        players[i].sendToClient(game.removeFromChestForPlayer(playerObjectList[i], temp));
+                                        String chestRemoveTemp = game.removeFromChestForPlayer(playerObjectList[i], temp);
+                                        players[i].sendToClient(chestRemoveTemp);
                                         break;
                                     case 5:
+                                        System.out.println("Player " + playerObjectList[i].getId() + "'s turn ended.");
                                         players[i].sendToClient("Player " + playerObjectList[i].getId() + "'s turn ended.");
                                         playerObjectList[i].setTotal((playerObjectList[i].getScore() + playerObjectList[i].getTotal()) < 0 ? 0 : (playerObjectList[i].getScore() + playerObjectList[i].getTotal()));
                                         endTurn = true;
@@ -221,8 +237,10 @@ public class Server {
 
                     }while(!game.checkWinCondition() || winningRound > 0);
 
+                    String winner = game.checkWinner();
+                    System.out.println(winner);
                     for(int i = 0; i < 3; i++) {
-                        players[i].sendToClient(game.checkWinner());
+                        players[i].sendToClient(winner);
                     }
 
                 }
