@@ -62,6 +62,7 @@ public class Part1 {
     }
     @Test
     void row46(){
+        Player p1 = new Player(1);
         Hand hand = new Hand();
         Scorer scorer = new Scorer();
 
@@ -93,9 +94,10 @@ public class Part1 {
                 d7,
                 d8});
 
-        Arrays.sort(hand.getHand(), new SortHelper());
-        hand.cleanUp();
-        System.out.println(hand.toString());
+        p1.getHand().setHand(hand.getHand());
+        Arrays.sort(p1.getHand().getHand(), new SortHelper());
+        p1.getHand().cleanUp();
+        System.out.println(p1.getHand().toString());
 
         Dice rolled_d1 = new Dice();
         Dice rolled_d2 = new Dice();
@@ -105,20 +107,21 @@ public class Part1 {
         rolled_d2.setDice(DiceState.SKULL);
         rolled_d3.setDice(DiceState.SWORD);
 
-        hand.setHand(new Dice[]{ hand.getHand()[0],
-                hand.getHand()[1],
-                hand.getHand()[2],
-                hand.getHand()[3],
+        p1.getHand().setHand(new Dice[]{  p1.getHand().getHand()[0],
+                p1.getHand().getHand()[1],
+                p1.getHand().getHand()[2],
+                p1.getHand().getHand()[3],
                 rolled_d1,
                 rolled_d2,
                 rolled_d3,
-                null});
+                p1.getHand().getHand()[7]});
 
-        Arrays.sort(hand.getHand(), new SortHelper());
-        hand.cleanUp();
-        System.out.println(hand.toString());
+        Arrays.sort( p1.getHand().getHand(), new SortHelper());
+        p1.getHand().cleanUp();
+        System.out.println(p1.getHand().toString());
 
         scorer.setAlive(false);
+        assertFalse(p1.isAlive());
     }
     @Test
     void row47(){
