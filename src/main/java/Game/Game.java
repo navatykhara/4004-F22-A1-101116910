@@ -207,7 +207,8 @@ public class Game {
     public String rollDiceForPlayer(Player p, Dice[] hand){
         String msg = "";
         p.getHand().setHand(hand);
-        System.out.println(p.getHand().toString());
+        Arrays.sort(p.getHand().getHand(), new SortHelper());
+        p.getHand().cleanUp();
         msg += "Player " + p.getId() + " rolls the dice and receives " + p.getHand().toString();
         return msg;
     }

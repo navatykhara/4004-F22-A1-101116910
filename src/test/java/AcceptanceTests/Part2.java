@@ -10,8 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class Part2 {
 
@@ -813,8 +812,6 @@ public class Part2 {
 
         p1.setFortune(new Skulls(2));
         assertFalse(p1.isAlive());
-
-
     }
     @Test
     void row107(){
