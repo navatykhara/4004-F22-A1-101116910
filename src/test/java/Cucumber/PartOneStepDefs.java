@@ -1,11 +1,12 @@
 package Cucumber;
 
 import Dice.*;
-import FortuneCards.Coin;
+import FortuneCards.*;
 import Game.Player;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.BeforeAll;
 
 import java.util.Arrays;
 
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PartOneStepDefs {
 
     Player p1;
-    Scorer scorer;
+    Scorer scorer = new Scorer();
 
     //row45
     @Given("I have a hand of {string}")
@@ -30,8 +31,8 @@ public class PartOneStepDefs {
     }
     @Then("I should get a score of {int}")
     public void i_should_get_a_score_of(Integer int1){
-        scorer = new Scorer();
-        scorer.setFortune(new Coin());
+        if(p1.getFortune() == null || p1.getFortune().getClass().equals(Coin.class))
+            scorer.setFortune(new Coin());
         scorer.setAlive(p1.isAlive());
         scorer.count(p1.getHand());
         assertEquals(scorer.score(), int1);
@@ -46,7 +47,44 @@ public class PartOneStepDefs {
         System.out.println(" to " + p1.getHand().toString());
 
     }
-
+    //row52
+    @When("FC is {string}")
+    public void fcIs(String fc) {
+        switch(fc){
+            case "CAPTAIN":
+                Captain c = new Captain();
+                p1.setFortune(c);
+                scorer.setFortune(c);
+                break;
+            case "COIN":
+                Coin co = new Coin();
+                p1.setFortune(co);
+                scorer.setFortune(co);
+                break;
+            case "DIAMOND":
+                Diamond d = new Diamond();
+                p1.setFortune(d);
+                scorer.setFortune(d);
+                break;
+            case "MONKEY BUSINESS":
+                MonkeyBusiness mb = new MonkeyBusiness();
+                p1.setFortune(mb);
+                scorer.setFortune(mb);
+                break;
+            case "SORCERESS":
+                Sorceress sc = new Sorceress();
+                p1.setFortune(sc);
+                scorer.setFortune(sc);
+                break;
+            case "TREASURE CHEST":
+                TreasureChest tc = new TreasureChest();
+                p1.setFortune(tc);
+                scorer.setFortune(tc);
+                break;
+            default:
+                break;
+        }
+    }
 
     public void stringToHand(String hand){
 
