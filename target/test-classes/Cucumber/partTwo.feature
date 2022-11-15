@@ -142,3 +142,9 @@ Feature: Does Part 2 work?
     Given I have a hand of "MONKEY,MONKEY,MONKEY,SWORD,SWORD,COIN,PARROT,PARROT"
     When FC is "SEA BATTLE" 2
     Then I should get a score of 500
+
+  Scenario: row119
+    Given I have a hand of "MONKEY,MONKEY,MONKEY,MONKEY,SWORD,SKULL,PARROT,PARROT"
+    When FC is "SEA BATTLE" 2
+    And I reroll "PARROT,PARROT" to "SWORD,SKULL"
+    Then I should get a score of 500
