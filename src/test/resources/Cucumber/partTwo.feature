@@ -21,3 +21,8 @@ Feature: Does Part 2 work?
     And I reroll skull to "PARROT"
     Then I should get a score of 2000
 
+  Scenario: row82
+    Given I have a hand of "MONKEY,MONKEY,MONKEY,PARROT,PARROT,PARROT,SKULL,COIN"
+    When FC is "MONKEY BUSINESS"
+    Then I should get a score of 1100
+
