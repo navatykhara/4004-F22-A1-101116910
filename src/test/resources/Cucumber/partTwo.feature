@@ -80,3 +80,8 @@ Feature: Does Part 2 work?
     And I reroll "PARROT,PARROT" to "COIN,SWORD"
     Then I should get a score of 1200
 
+  Scenario: row103
+    Given I have a hand of "MONKEY,MONKEY,PARROT,COIN,COIN,DIAMOND,DIAMOND,DIAMOND"
+    When FC is "MONKEY BUSINESS"
+    Then I should get a score of 1200
+
