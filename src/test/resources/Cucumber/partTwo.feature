@@ -138,3 +138,7 @@ Feature: Does Part 2 work?
     And I die
     Then I should get a score of -1000
 
+  Scenario: row117
+    Given I have a hand of "MONKEY,MONKEY,MONKEY,SWORD,SWORD,COIN,PARROT,PARROT"
+    When FC is "SEA BATTLE" 2
+    Then I should get a score of 500
