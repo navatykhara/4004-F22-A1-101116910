@@ -63,3 +63,8 @@ Feature: Does Part 2 work?
     Given I have a hand of "MONKEY,MONKEY,MONKEY,SWORD,SWORD,SWORD,DIAMOND,PARROT"
     When FC is "COIN"
     Then I should get a score of 400
+
+  Scenario: row98
+    Given I have a hand of "MONKEY,MONKEY,MONKEY,SWORD,SWORD,SWORD,COIN,COIN"
+    When FC is "CAPTAIN"
+    Then I should get a score of 1800
