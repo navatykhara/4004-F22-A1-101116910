@@ -48,3 +48,13 @@ Feature: Does Part 2 work?
     And I reroll "DIAMOND,DIAMOND,COIN" to "SKULL,COIN,PARROT"
     And I put "COIN,PARROT" in chest
     Then I should get a score of 1100
+
+  Scenario: row94
+    Given I have a hand of "SKULL,SKULL,PARROT,PARROT,PARROT,COIN,COIN,COIN"
+    When FC is "TREASURE CHEST"
+    And I put "COIN,COIN,COIN" in chest
+    And I reroll "PARROT,PARROT,PARROT" to "DIAMOND,DIAMOND,COIN"
+    And I put "COIN" in chest
+    And I reroll "DIAMOND,DIAMOND" to "SKULL,COIN"
+    And I should get a score of 600
+    Then I report death
