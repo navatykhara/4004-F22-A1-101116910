@@ -160,3 +160,8 @@ Feature: Does Part 2 work?
     And I reroll "MONKEY,MONKEY,MONKEY,MONKEY" to "SKULL,SKULL,SWORD,SWORD"
     And I die
     Then I should get a score of -500
+
+  Scenario: row123
+    Given I have a hand of "MONKEY,MONKEY,MONKEY,SWORD,SWORD,SWORD,SWORD,SKULL"
+    When FC is "SEA BATTLE" 4
+    Then I should get a score of 1300
