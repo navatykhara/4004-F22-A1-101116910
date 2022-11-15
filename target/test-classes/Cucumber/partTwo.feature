@@ -103,8 +103,14 @@ Feature: Does Part 2 work?
     And I deduct 900
     Then I should get a score of 0
 
-  Scenario: row109
+  Scenario: row110
     Given I have a hand of "SKULL,SKULL,SKULL,SKULL,SKULL,MONKEY,MONKEY,MONKEY"
     When FC is "CAPTAIN"
     And I reroll "MONKEY,MONKEY,MONKEY" to "SKULL,SKULL,COIN"
     Then I deduct 1400
+
+  Scenario: row111
+    Given I have a hand of "SKULL,SKULL,SKULL,SWORD,SWORD,SWORD,SWORD,SWORD"
+    When FC is "SKULLS" 2
+    And I reroll "SWORD,SWORD,SWORD,SWORD,SWORD" to "COIN,COIN,COIN,COIN,COIN"
+    Then I deduct 500
