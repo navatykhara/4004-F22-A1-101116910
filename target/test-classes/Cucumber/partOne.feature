@@ -1,4 +1,4 @@
-Feature: Does single player scoring work?
+Feature: Does Part 1 work?
 
   Scenario: row45
     Given I have a hand of "SKULL,SKULL,SKULL,SWORD,SWORD,SWORD,SWORD,SWORD"

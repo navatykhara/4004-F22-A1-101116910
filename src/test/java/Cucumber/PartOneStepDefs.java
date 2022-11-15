@@ -3,6 +3,7 @@ package Cucumber;
 import Dice.*;
 import FortuneCards.*;
 import Game.Player;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -49,7 +50,7 @@ public class PartOneStepDefs {
     }
     //row52
     @When("FC is {string}")
-    public void fcIs(String fc) {
+    public void fc_is(String fc) {
         switch(fc){
             case "CAPTAIN":
                 Captain c = new Captain();
@@ -85,7 +86,38 @@ public class PartOneStepDefs {
                 break;
         }
     }
+    @When("I reroll skull to {string}")
+    public void i_reroll_skull(String reroll) {
 
+        Dice d = new Dice();
+
+        switch(reroll){
+            case "DIAMOND":
+                d.setDice(DiceState.DIAMOND);
+                break;
+            case "COIN":
+                d.setDice(DiceState.COIN);
+                break;
+            case "MONKEY":
+                d.setDice(DiceState.MONKEY);
+                break;
+            case "PARROT":
+                d.setDice(DiceState.PARROT);
+                break;
+            case "SWORD":
+                d.setDice(DiceState.SWORD);
+                break;
+            case "SKULL":
+               d.setDice(DiceState.SKULL);
+                break;
+            default:
+                break;
+        }
+        System.out.print("I reroll skull " + p1.getHand().toString() );
+        p1.getHand().rollSkull(p1.getFortune(), d);
+        System.out.println(" to " + p1.getHand().toString());
+
+    }
     public void stringToHand(String hand){
 
         Dice d1 = new Dice();
