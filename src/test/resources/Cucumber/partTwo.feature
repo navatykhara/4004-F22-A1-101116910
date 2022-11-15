@@ -32,3 +32,8 @@ Feature: Does Part 2 work?
     And FC is "MONKEY BUSINESS"
     Then I should get a score of 1700
 
+  Scenario: row84
+    Given I have a hand of "SKULL,SKULL,SKULL,MONKEY,MONKEY,MONKEY,PARROT,PARROT"
+    When FC is "MONKEY BUSINESS"
+    And I die
+    Then I should get a score of 0
