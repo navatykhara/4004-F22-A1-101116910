@@ -9,3 +9,8 @@ Feature: Does single player scoring work?
     Given I have a hand of "SKULL,PARROT,PARROT,PARROT,PARROT,SWORD,SWORD,SWORD"
     When I reroll "SWORD,SWORD,SWORD" to "SKULL,SKULL,SWORD"
     Then I die
+
+  Scenario: row47
+    Given I have a hand of "SKULL,SKULL,PARROT,PARROT,PARROT,PARROT,SWORD,SWORD"
+    When I reroll "SWORD,SWORD" to "SKULL,SWORD"
+    Then I die
