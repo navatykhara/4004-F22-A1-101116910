@@ -148,3 +148,8 @@ Feature: Does Part 2 work?
     When FC is "SEA BATTLE" 2
     And I reroll "PARROT,PARROT" to "SWORD,SKULL"
     Then I should get a score of 500
+
+  Scenario: row120
+    Given I have a hand of "MONKEY,MONKEY,MONKEY,SWORD,SWORD,SWORD,SWORD,SKULL"
+    When FC is "SEA BATTLE" 3
+    Then I should get a score of 800
