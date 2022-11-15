@@ -89,3 +89,8 @@ Feature: Does Part 2 work?
     Given I have a hand of "SKULL,SWORD,SWORD,SWORD,SWORD,SWORD,SWORD,SWORD"
     When FC is "SKULLS" 2
     Then I die
+
+  Scenario: row107
+    Given I have a hand of "SKULL,SKULL,SWORD,SWORD,SWORD,SWORD,SWORD,SWORD"
+    When FC is "SKULLS" 1
+    Then I die
