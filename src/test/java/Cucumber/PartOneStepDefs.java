@@ -36,6 +36,16 @@ public class PartOneStepDefs {
         System.out.println("I should get a score of " + int1);
     }
 
+    //row46
+    @When("I reroll {string} to {string}")
+    public void i_reroll_to(String req, String reroll) {
+        System.out.print("I reroll " + p1.getHand().toString() );
+        stringToExistingHand(req, reroll);
+        System.out.println(" to " + p1.getHand().toString());
+
+    }
+
+
     public void stringToHand(String hand){
 
         Dice d1 = new Dice();
@@ -79,6 +89,60 @@ public class PartOneStepDefs {
         Arrays.sort(dices, new SortHelper());
 
         p1.getHand().setHand(dices);
+        p1.getHand().cleanUp();
+
+    }
+    public void stringToExistingHand(String req, String reroll){
+
+        Dice rerolled_d1 = new Dice();
+        Dice rerolled_d2 = new Dice();
+        Dice rerolled_d3 = new Dice();
+        Dice rerolled_d4 = new Dice();
+        Dice rerolled_d5 = new Dice();
+        Dice rerolled_d6 = new Dice();
+        Dice rerolled_d7 = new Dice();
+        Dice rerolled_d8 = new Dice();
+
+        Dice[] dices = new Dice[]{rerolled_d1, rerolled_d2, rerolled_d3, rerolled_d4, rerolled_d5, rerolled_d6, rerolled_d7, rerolled_d8};
+
+        String[] requests = req.split(",");
+        String[] rerolls = reroll.split(",");
+
+        int counter = 0;
+        for(int i = 0; i < 8; i++){
+            if(counter >= requests.length)
+                break;
+            if(p1.getHand().getHand()[i].getDice().toString().equals(requests[counter])){
+                switch(rerolls[counter]){
+                    case "DIAMOND":
+                        dices[i].setDice(DiceState.DIAMOND);
+                        break;
+                    case "COIN":
+                        dices[i].setDice(DiceState.COIN);
+                        break;
+                    case "MONKEY":
+                        dices[i].setDice(DiceState.MONKEY);
+                        break;
+                    case "PARROT":
+                        dices[i].setDice(DiceState.PARROT);
+                        break;
+                    case "SWORD":
+                        dices[i].setDice(DiceState.SWORD);
+                        break;
+                    case "SKULL":
+                        dices[i].setDice(DiceState.SKULL);
+                        break;
+                    default:
+                        break;
+                }
+                p1.getHand().getHand()[i] = dices[i];
+                counter++;
+            }
+        }
+
+
+        Arrays.sort(p1.getHand().getHand(), new SortHelper());
+
         p1.getHand().cleanUp();
 
     }
