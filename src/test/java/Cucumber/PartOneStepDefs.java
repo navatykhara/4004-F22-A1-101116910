@@ -172,6 +172,23 @@ public class PartOneStepDefs {
     public void i_report_death() {
         System.out.println("Player " + p1.getId() + " has died.");
     }
+    @When("FC is {string} {int}")
+    public void fc_is(String fc, int i) {
+        switch(fc) {
+            case "SEA BATTLE":
+                SeaBattle sb = new SeaBattle(i);
+                p1.setFortune(sb);
+                scorer.setFortune(sb);
+                break;
+            case "SKULLS":
+                Skulls s = new Skulls(i);
+                p1.setFortune(s);
+                scorer.setFortune(s);
+                break;
+            default:
+                break;
+        }
+    }
     public void stringToHand(String hand){
 
         Dice d1 = new Dice();
@@ -272,7 +289,6 @@ public class PartOneStepDefs {
         p1.getHand().cleanUp();
 
     }
-
 
 
 }
