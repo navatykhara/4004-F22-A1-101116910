@@ -49,3 +49,7 @@ Feature: Does single player scoring work?
     Given I have a hand of "COIN,COIN,COIN,COIN,SKULL,SKULL,SWORD,SWORD"
     When FC is "DIAMOND"
     Then I should get a score of 700
+
+  Scenario: row57
+    Given I have a hand of "SWORD,SWORD,SWORD,PARROT,PARROT,PARROT,PARROT,SKULL"
+    Then I should get a score of 400
