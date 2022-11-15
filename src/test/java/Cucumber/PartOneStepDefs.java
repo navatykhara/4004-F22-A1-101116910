@@ -1,6 +1,7 @@
 package Cucumber;
 
 import Dice.*;
+import FortuneCards.Coin;
 import Game.Player;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -30,6 +31,7 @@ public class PartOneStepDefs {
     @Then("I should get a score of {int}")
     public void i_should_get_a_score_of(Integer int1){
         scorer = new Scorer();
+        scorer.setFortune(new Coin());
         scorer.setAlive(p1.isAlive());
         scorer.count(p1.getHand());
         assertEquals(scorer.score(), int1);
