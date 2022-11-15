@@ -168,6 +168,10 @@ public class PartOneStepDefs {
         p1.getHand().removeFromChest(p1.getFortune(), temp);
         System.out.println(p1.getHand().toString() + "| CHEST : " + p1.getHand().toString(p1.getFortune()));
     }
+    @Then("I report death")
+    public void i_report_death() {
+        System.out.println("Player " + p1.getId() + " has died.");
+    }
     public void stringToHand(String hand){
 
         Dice d1 = new Dice();
@@ -268,6 +272,7 @@ public class PartOneStepDefs {
         p1.getHand().cleanUp();
 
     }
+
 
 
 }
