@@ -85,3 +85,7 @@ Feature: Does Part 2 work?
     When FC is "MONKEY BUSINESS"
     Then I should get a score of 1200
 
+  Scenario: row106
+    Given I have a hand of "SKULL,SWORD,SWORD,SWORD,SWORD,SWORD,SWORD,SWORD"
+    When FC is "SKULLS" 2
+    Then I die
