@@ -82,3 +82,8 @@ Feature: Does single player scoring work?
   Scenario: row64
     Given I have a hand of "COIN,COIN,COIN,COIN,COIN,COIN,COIN,COIN"
     Then I should get a score of 5400
+
+  Scenario: row65
+    Given I have a hand of "COIN,COIN,COIN,COIN,COIN,COIN,COIN,COIN"
+    When FC is "DIAMOND"
+    Then I should get a score of 5400
