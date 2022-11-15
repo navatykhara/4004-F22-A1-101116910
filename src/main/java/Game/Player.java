@@ -34,7 +34,7 @@ public class Player {
     }
 
     public void setTotal(int i) {
-        this.total = i;
+        this.total = i < 0 ? 0 : i;
     }
 
     public void setFortune(FortuneCards f){

@@ -17,7 +17,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class PartOneStepDefs {
 
-    Player p1;
+    Player p1 = new Player(1);
+    Player p2 = new Player(2);
+    Player p3 = new Player(3);
     Scorer scorer = new Scorer();
 
     //row45
@@ -189,6 +191,25 @@ public class PartOneStepDefs {
                 break;
         }
     }
+
+    @And("I deduct {int}")
+    public void i_deduct(int p) {
+        p1.getHand().setOnSkullIsland(p1.getFortune());
+        assertTrue(p1.getHand().isOnSkullIsland());
+
+        System.out.println("I deduct " + p1.getHand().getDeduction(p1.getFortune()));
+        if(p1.getHand().isOnSkullIsland()){
+            p2.setTotal(p2.getTotal() - p1.getHand().getDeduction(p1.getFortune()));
+            p3.setTotal(p3.getTotal() - p1.getHand().getDeduction(p1.getFortune()));
+        }
+
+        assertEquals(p, p1.getHand().getDeduction(p1.getFortune()));
+
+        String msg = "| Player " + p1.getId() + " score = " + p1.getTotal() + " |" +
+                " Player " + p2.getId() + " score = " + p2.getTotal() +
+                "| Player " + p3.getId() + " score = " + p3.getTotal() + " |";
+        System.out.println(msg);
+    }
     public void stringToHand(String hand){
 
         Dice d1 = new Dice();
@@ -289,6 +310,7 @@ public class PartOneStepDefs {
         p1.getHand().cleanUp();
 
     }
+
 
 
 }

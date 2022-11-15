@@ -94,3 +94,11 @@ Feature: Does Part 2 work?
     Given I have a hand of "SKULL,SKULL,SWORD,SWORD,SWORD,SWORD,SWORD,SWORD"
     When FC is "SKULLS" 1
     Then I die
+
+  Scenario: row109
+    Given I have a hand of "SKULL,SKULL,MONKEY,MONKEY,MONKEY,PARROT,PARROT,PARROT"
+    When FC is "SKULLS" 2
+    And I reroll "PARROT,PARROT,PARROT" to "SKULL,SKULL,SWORD"
+    And I reroll "MONKEY,MONKEY,MONKEY,SWORD" to "SKULL,SKULL,SKULL,SWORD"
+    And I deduct 900
+    Then I should get a score of 0

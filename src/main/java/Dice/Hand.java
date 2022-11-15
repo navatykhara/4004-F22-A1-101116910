@@ -3,6 +3,7 @@ package Dice;
 import FortuneCards.FortuneCards;
 import FortuneCards.Skulls;
 import FortuneCards.Sorceress;
+import FortuneCards.Captain;
 import FortuneCards.TreasureChest;
 
 import java.util.ArrayList;
@@ -53,6 +54,11 @@ public class Hand {
         this.hand = hand;
     }
 
+    public int getDeduction(FortuneCards f){
+        if(f.getClass().equals(Captain.class))
+            return getNumSkulls(f) * -100 * 2;
+        return -getNumSkulls(f) * -100;
+    }
     public int getNumSkulls(FortuneCards f){
         if(f != null && f.getClass().equals(Skulls.class))
             return graveyard.size() + ((Skulls) f).getSkulls();
