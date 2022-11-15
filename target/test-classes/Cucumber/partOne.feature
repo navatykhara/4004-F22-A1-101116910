@@ -40,3 +40,7 @@ Feature: Does single player scoring work?
   Scenario: row54
     Given I have a hand of "MONKEY,MONKEY,MONKEY,SWORD,SWORD,SWORD,SKULL,SKULL"
     Then I should get a score of 300
+
+  Scenario: row55
+    Given I have a hand of "DIAMOND,DIAMOND,DIAMOND,SKULL,SKULL,MONKEY,SWORD,PARROT"
+    Then I should get a score of 500
