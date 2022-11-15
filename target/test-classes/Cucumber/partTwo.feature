@@ -114,3 +114,9 @@ Feature: Does Part 2 work?
     When FC is "SKULLS" 2
     And I reroll "SWORD,SWORD,SWORD,SWORD,SWORD" to "COIN,COIN,COIN,COIN,COIN"
     Then I deduct 500
+
+  Scenario: row114
+    Given I have a hand of "MONKEY,MONKEY,MONKEY,MONKEY,SKULL,SKULL,SKULL,SWORD"
+    When FC is "SEA BATTLE" 2
+    And I die
+    Then I should get a score of -300
