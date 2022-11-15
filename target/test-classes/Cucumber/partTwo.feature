@@ -49,7 +49,7 @@ Feature: Does Part 2 work?
     And I put "COIN,PARROT" in chest
     Then I should get a score of 1100
 
-  Scenario: row92
+  Scenario: row94
     Given I have a hand of "SKULL,SKULL,PARROT,PARROT,PARROT,COIN,COIN,COIN"
     When FC is "TREASURE CHEST"
     And I put "COIN,COIN,COIN" in chest
@@ -58,3 +58,8 @@ Feature: Does Part 2 work?
     And I reroll "DIAMOND,DIAMOND" to "SKULL,COIN"
     And I should get a score of 600
     Then I report death
+
+  Scenario: row97
+    Given I have a hand of "MONKEY,MONKEY,MONKEY,SWORD,SWORD,SWORD,DIAMOND,PARROT"
+    When FC is "COIN"
+    Then I should get a score of 400

@@ -58,3 +58,8 @@ Feature: Does Part 2 work?
     And I reroll "DIAMOND,DIAMOND" to "SKULL,COIN"
     And I should get a score of 600
     Then I report death
+
+  Scenario: row97
+    Given I have a hand of "MONKEY,MONKEY,MONKEY,SWORD,SWORD,SWORD,DIAMOND,PARROT"
+    When FC is "COIN"
+    Then I should get a score of 400
