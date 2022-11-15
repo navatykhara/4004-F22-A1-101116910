@@ -56,8 +56,8 @@ public class Hand {
 
     public int getDeduction(FortuneCards f){
         if(f.getClass().equals(Captain.class))
-            return getNumSkulls(f) * -100 * 2;
-        return -getNumSkulls(f) * -100;
+            return getNumSkulls(f) * 100 * 2;
+        return getNumSkulls(f) * 100;
     }
     public int getNumSkulls(FortuneCards f){
         if(f != null && f.getClass().equals(Skulls.class))
