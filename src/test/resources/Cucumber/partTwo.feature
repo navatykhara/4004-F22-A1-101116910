@@ -37,3 +37,14 @@ Feature: Does Part 2 work?
     When FC is "MONKEY BUSINESS"
     And I die
     Then I should get a score of 0
+
+  Scenario: row90
+    Given I have a hand of "PARROT,PARROT,PARROT,SWORD,SWORD,DIAMOND,DIAMOND,COIN"
+    When FC is "TREASURE CHEST"
+    And I put "DIAMOND,DIAMOND,COIN" in chest
+    And I reroll "SWORD,SWORD" to "PARROT,PARROT"
+    And I put "PARROT,PARROT,PARROT,PARROT,PARROT" in chest
+    And I take out "DIAMOND,DIAMOND,COIN"
+    And I reroll "DIAMOND,DIAMOND,COIN" to "SKULL,COIN,PARROT"
+    And I put "COIN,PARROT" in chest
+    Then I should get a score of 1100

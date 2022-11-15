@@ -3,12 +3,14 @@ package Cucumber;
 import Dice.*;
 import FortuneCards.*;
 import Game.Player;
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.BeforeAll;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -35,7 +37,10 @@ public class PartOneStepDefs {
         if(p1.getFortune() == null || p1.getFortune().getClass().equals(Coin.class))
             scorer.setFortune(new Coin());
         scorer.setAlive(p1.isAlive());
-        scorer.count(p1.getHand());
+        if(p1.getFortune() != null && p1.getFortune().getClass().equals(TreasureChest.class))
+            scorer.count(((TreasureChest)p1.getFortune()).getHand());
+        else
+            scorer.count(p1.getHand());
         assertEquals(scorer.score(), int1);
         System.out.println("I should get a score of " + int1);
     }
@@ -117,6 +122,51 @@ public class PartOneStepDefs {
         p1.getHand().rollSkull(p1.getFortune(), d);
         System.out.println(" to " + p1.getHand().toString());
 
+    }
+
+    @When("I put {string} in chest")
+    public void i_put_in_chest(String req) {
+        String[] requests = req.split(",");
+        ArrayList<Integer> index = new ArrayList<>();
+
+        int counter = 0;
+        for(int i = 0; i < 8; i++){
+            if(counter >= requests.length)
+                break;
+            if(p1.getHand().getHand()[i].getDice().toString().equals(requests[counter])){
+                index.add(i);
+                counter++;
+            }
+        }
+
+        int[] temp = new int[index.size()];
+        for(int i = 0; i < temp.length; i++)
+            temp[i] = index.get(i);
+
+        p1.getHand().addToChest(p1.getFortune(), temp);
+        System.out.println(p1.getHand().toString() + "| CHEST : " + p1.getHand().toString(p1.getFortune()));
+    }
+    @When("I take out {string}")
+    public void i_take_out(String req) {
+        String[] requests = req.split(",");
+        ArrayList<Integer> index = new ArrayList<>();
+
+        int counter = 0;
+        for(int i = 0; i < 8; i++){
+            if(counter >= requests.length)
+                break;
+            if(((TreasureChest) p1.getFortune()).getHand().getHand()[i].getDice().toString().equals(requests[counter])){
+                index.add(i);
+                counter++;
+            }
+        }
+
+        int[] temp = new int[index.size()];
+        for(int i = 0; i < temp.length; i++)
+            temp[i] = index.get(i);
+
+        p1.getHand().removeFromChest(p1.getFortune(), temp);
+        System.out.println(p1.getHand().toString() + "| CHEST : " + p1.getHand().toString(p1.getFortune()));
     }
     public void stringToHand(String hand){
 
@@ -218,7 +268,6 @@ public class PartOneStepDefs {
         p1.getHand().cleanUp();
 
     }
-
 
 
 }
