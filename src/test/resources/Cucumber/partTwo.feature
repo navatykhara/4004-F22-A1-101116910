@@ -132,3 +132,9 @@ Feature: Does Part 2 work?
     And I die
     Then I should get a score of -500
 
+  Scenario: row116
+    Given I have a hand of "MONKEY,MONKEY,SKULL,SKULL,SKULL,SWORD,SWORD,SWORD"
+    When FC is "SEA BATTLE" 4
+    And I die
+    Then I should get a score of -1000
+
