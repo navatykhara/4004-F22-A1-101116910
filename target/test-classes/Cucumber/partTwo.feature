@@ -13,3 +13,11 @@ Feature: Does Part 2 work?
     And I reroll skull to "PARROT"
     And I reroll "SWORD,SWORD" to "PARROT,PARROT"
     Then I should get a score of 1000
+
+  Scenario: row79
+    Given I have a hand of "SKULL,PARROT,PARROT,PARROT,PARROT,MONKEY,MONKEY,MONKEY"
+    When I reroll "MONKEY,MONKEY,MONKEY" to "SKULL,PARROT,PARROT"
+    And FC is "SORCERESS"
+    And I reroll skull to "PARROT"
+    Then I should get a score of 2000
+
