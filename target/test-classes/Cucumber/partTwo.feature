@@ -115,8 +115,20 @@ Feature: Does Part 2 work?
     And I reroll "SWORD,SWORD,SWORD,SWORD,SWORD" to "COIN,COIN,COIN,COIN,COIN"
     Then I deduct 500
 
+  #For row114, it is important to note that score and total are different in this system
+  #Score represents the points gained or loss in a round, Total represents the total points a player has
+  #It is important to note that even though Player 1 has a score of -300, it does not mean that their total will go below zero
+
   Scenario: row114
     Given I have a hand of "MONKEY,MONKEY,MONKEY,MONKEY,SKULL,SKULL,SKULL,SWORD"
     When FC is "SEA BATTLE" 2
     And I die
     Then I should get a score of -300
+
+  Scenario: row115
+    Given I have a hand of "SWORD,SWORD,SKULL,SKULL,PARROT,PARROT,PARROT,PARROT"
+    When FC is "SEA BATTLE" 3
+    And I reroll "PARROT,PARROT,PARROT,PARROT" to "SKULL,SKULL,SKULL,SKULL"
+    And I die
+    Then I should get a score of -500
+

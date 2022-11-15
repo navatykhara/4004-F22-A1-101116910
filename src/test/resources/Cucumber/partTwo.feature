@@ -124,3 +124,11 @@ Feature: Does Part 2 work?
     When FC is "SEA BATTLE" 2
     And I die
     Then I should get a score of -300
+
+  Scenario: row115
+    Given I have a hand of "SWORD,SWORD,SKULL,SKULL,PARROT,PARROT,PARROT,PARROT"
+    When FC is "SEA BATTLE" 3
+    And I reroll "PARROT,PARROT,PARROT,PARROT" to "SKULL,SKULL,SKULL,SKULL"
+    And I die
+    Then I should get a score of -500
+
