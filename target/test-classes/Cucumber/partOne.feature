@@ -113,3 +113,9 @@ Feature: Does single player scoring work?
     Given I have a hand of "SKULL,COIN,COIN,MONKEY,PARROT,SWORD,SWORD,SWORD"
     When I reroll "SWORD,SWORD,SWORD" to "COIN,MONKEY,PARROT"
     Then I should get a score of 600
+
+  Scenario: row71
+    Given I have a hand of "SKULL,COIN,COIN,MONKEY,PARROT,SWORD,SWORD,SWORD"
+    When I reroll "SWORD,SWORD,SWORD" to "COIN,MONKEY,PARROT"
+    And FC is "DIAMOND"
+    Then I should get a score of 500
