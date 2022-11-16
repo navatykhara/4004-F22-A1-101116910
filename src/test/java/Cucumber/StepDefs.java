@@ -17,7 +17,7 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PartOneStepDefs {
+public class StepDefs {
 
     Player p1 = new Player(1);
     Player p2 = new Player(2);
