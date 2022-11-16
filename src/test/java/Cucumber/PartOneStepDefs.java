@@ -297,6 +297,48 @@ public class PartOneStepDefs {
         System.out.println(temp);
         assertEquals(temp, "Player " + players[index].getId() + " won with " + players[index].getTotal() + " points.");
     }
+    @When("Player {int} deduct {int}")
+    public void player_deduct(int id, int dd){
+        int index = id - 1;
+
+        players[index].getHand().setOnSkullIsland(players[index].getFortune());
+        assertTrue(players[index].getHand().isOnSkullIsland());
+
+        System.out.println("I deduct " + players[index].getHand().getDeduction(players[index].getFortune()));
+        if(players[index].getHand().isOnSkullIsland()){
+
+            switch(id){
+                case 1:
+                    players[1].setTotal(players[1].getTotal() - players[0].getHand().getDeduction(players[0].getFortune()));
+                    players[2].setTotal(players[2].getTotal() - players[0].getHand().getDeduction(players[0].getFortune()));
+                    break;
+                case 2:
+                    players[0].setTotal(players[0].getTotal() - players[1].getHand().getDeduction(players[1].getFortune()));
+                    players[2].setTotal(players[2].getTotal() - players[1].getHand().getDeduction(players[1].getFortune()));
+                    break;
+                case 3:
+                    players[0].setTotal(players[0].getTotal() - players[2].getHand().getDeduction(players[2].getFortune()));
+                    players[1].setTotal(players[1].getTotal() - players[2].getHand().getDeduction(players[2].getFortune()));
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        assertEquals(dd, players[index].getHand().getDeduction(players[index].getFortune()));
+        System.out.println(game.getScoreBoard());
+    }
+    @When("Player {int} should total {int}")
+    public void player_should_total(int id, int t){
+        int index = id - 1;
+        assertEquals(players[index].getTotal(), t);
+    }
+    @When("Player {int} has a new hand of {string}")
+    public void player_has_a_new_hand_of(int id, String hand){
+        int index = id - 1;
+        stringToHand(hand, players[index]);
+        System.out.println("Player " + players[index].getId() + " has a hand of " + players[index].getHand().toString());
+    }
 
     public void stringToHand(String hand){
 

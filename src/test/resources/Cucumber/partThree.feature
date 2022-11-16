@@ -13,7 +13,7 @@ Feature: Does Part 3 work?
     And Game stops
     Then Player 1 should win
 
-  Scenario: row13
+  Scenario: row140
     Given Player 1 has a hand of "SWORD,SWORD,SWORD,SWORD,SWORD,SWORD,SWORD,SKULL"
     When Player 1 FC is "CAPTAIN"
     And Player 1 should score of 4000
@@ -27,11 +27,11 @@ Feature: Does Part 3 work?
     And Player 2 should total 0
     And Player 1 has a new hand of "MONKEY,MONKEY,MONKEY,MONKEY,PARROT,PARROT,PARROT,PARROT"
     And Player 1 FC is "COIN"
-    And Player 1 should score 1000
+    And Player 1 should score of 1000
     And Player 1 should total 3800
     And Player 2 has a new hand of "SKULL,SKULL,SKULL,MONKEY,MONKEY,MONKEY,MONKEY,MONKEY"
     And Player 2 FC is "COIN"
-    And Player 2 should score 0
+    And Player 2 should score of 0
     And Player 3 has a new hand of "SKULL,SKULL,MONKEY,MONKEY,MONKEY,MONKEY,MONKEY,MONKEY"
     And Player 3 FC is "SKULLS" 1
     Then Player 1 should win
