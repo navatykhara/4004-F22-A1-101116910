@@ -50,3 +50,16 @@ Feature: Does Part 3 work?
     And Player 1 FC is "CAPTAIN"
     And Player 1 should score of 9000
     Then Player 1 should win
+
+  Scenario: row150
+    Given Player 1 has a hand of "SWORD,SWORD,SWORD,SWORD,SWORD,SWORD,SKULL,SKULL"
+    When Player 1 FC is "COIN"
+    And Player 1 should score of 1100
+    And Player 2 has a hand of "SKULL,SKULL,SKULL,SKULL,SKULL,SKULL,SKULL,COIN"
+    And Player 2 FC is "SORCERESS"
+    And Player 2 reroll skull to "PARROT"
+    And Player 2 reroll "COIN,PARROT" to "SKULL,SKULL"
+    And Player 2 deduct 800
+    And Player 1 should total 300
+    And Player 2 should total 0
+    Then Player 3 should total 0

@@ -340,6 +340,48 @@ public class PartOneStepDefs {
         stringToHand(hand, players[index]);
         System.out.println("Player " + players[index].getId() + " has a hand of " + players[index].getHand().toString());
     }
+    @When("Player {int} reroll skull to {string}")
+    public void player_reroll_skull(int id, String reroll) {
+
+        int index = id - 1;
+        Dice d = new Dice();
+
+        switch(reroll){
+            case "DIAMOND":
+                d.setDice(DiceState.DIAMOND);
+                break;
+            case "COIN":
+                d.setDice(DiceState.COIN);
+                break;
+            case "MONKEY":
+                d.setDice(DiceState.MONKEY);
+                break;
+            case "PARROT":
+                d.setDice(DiceState.PARROT);
+                break;
+            case "SWORD":
+                d.setDice(DiceState.SWORD);
+                break;
+            case "SKULL":
+                d.setDice(DiceState.SKULL);
+                break;
+            default:
+                break;
+        }
+        System.out.print("I reroll skull " + players[index].getHand().toString() );
+        players[index].getHand().rollSkull(players[index].getFortune(), d);
+        System.out.println(" to " + players[index].getHand().toString());
+
+    }
+
+    @When("Player {int} reroll {string} to {string}")
+    public void i_reroll_to(int id, String req, String reroll) {
+        int index = id - 1;
+        System.out.print("I reroll " + players[index].getHand().toString() );
+        stringToExistingHand(req, reroll, players[index]);
+        System.out.println(" to " + players[index].getHand().toString());
+
+    }
 
     public void stringToHand(String hand){
 
