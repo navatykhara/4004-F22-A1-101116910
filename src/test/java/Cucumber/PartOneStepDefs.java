@@ -336,6 +336,7 @@ public class PartOneStepDefs {
     @When("Player {int} has a new hand of {string}")
     public void player_has_a_new_hand_of(int id, String hand){
         int index = id - 1;
+        players[index].getHand().initialize();
         stringToHand(hand, players[index]);
         System.out.println("Player " + players[index].getId() + " has a hand of " + players[index].getHand().toString());
     }
