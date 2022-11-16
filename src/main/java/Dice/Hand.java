@@ -36,6 +36,9 @@ public class Hand {
         cleanUp();
     }
 
+    public void graveyardInitialize(){
+        graveyard = new ArrayList<>();
+    }
     public void setOnSkullIsland(FortuneCards fortune){
         int count = getNumSkulls(fortune);
 

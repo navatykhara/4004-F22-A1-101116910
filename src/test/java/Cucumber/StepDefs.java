@@ -304,7 +304,7 @@ public class StepDefs {
         players[index].getHand().setOnSkullIsland(players[index].getFortune());
         assertTrue(players[index].getHand().isOnSkullIsland());
 
-        System.out.println("I deduct " + players[index].getHand().getDeduction(players[index].getFortune()));
+        System.out.println("Player " + id + " deducts " + players[index].getHand().getDeduction(players[index].getFortune()));
         if(players[index].getHand().isOnSkullIsland()){
 
             switch(id){
@@ -336,7 +336,7 @@ public class StepDefs {
     @When("Player {int} has a new hand of {string}")
     public void player_has_a_new_hand_of(int id, String hand){
         int index = id - 1;
-        players[index].getHand().initialize();
+        players[index].getHand().graveyardInitialize();
         stringToHand(hand, players[index]);
         System.out.println("Player " + players[index].getId() + " has a hand of " + players[index].getHand().toString());
     }
@@ -368,7 +368,7 @@ public class StepDefs {
             default:
                 break;
         }
-        System.out.print("I reroll skull " + players[index].getHand().toString() );
+        System.out.print("Player " + id + " reroll skull " + players[index].getHand().toString() );
         players[index].getHand().rollSkull(players[index].getFortune(), d);
         System.out.println(" to " + players[index].getHand().toString());
 
@@ -377,7 +377,7 @@ public class StepDefs {
     @When("Player {int} reroll {string} to {string}")
     public void i_reroll_to(int id, String req, String reroll) {
         int index = id - 1;
-        System.out.print("I reroll " + players[index].getHand().toString() );
+        System.out.print("Player " + id + " reroll " + players[index].getHand().toString() );
         stringToExistingHand(req, reroll, players[index]);
         System.out.println(" to " + players[index].getHand().toString());
 
