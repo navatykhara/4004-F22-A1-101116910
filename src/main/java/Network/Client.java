@@ -88,13 +88,23 @@ public class Client {
 
                         while(true) {
                             //Player Hand
-                            System.out.println(csc.receiveFromServer());
+                            msg = csc.receiveFromServer();
+
+                            if(msg.equals("Player " + playerID + " has died.")){
+                                System.out.println(msg);
+                                break;
+                            }
+
+                            System.out.println(msg);
 
                             msg = csc.receiveFromServer();
 
                             if(msg.equals("Player " + playerID + " has died.")){
                                 System.out.println(msg);
                                 break;
+                            }else if(msg.equals("Player " + playerID + " is in Skull Island.")){
+                                System.out.println(msg);
+                                msg = csc.receiveFromServer();
                             }
 
                             //Player Score
@@ -127,7 +137,7 @@ public class Client {
                                 }
                                 //Game message
                                 System.out.println(csc.receiveFromServer());
-                            }else if(!msg.equals("Player " + playerID + "'s turn ended.")){ //Reroll skulls case
+                            }else if(!msg.equals("Player " + playerID + "'s turn ended.") && !msg.equals("Player " + playerID + " has died.")){ //Reroll skulls case
                                 //Rerolled skull message
                                 System.out.println(msg);
                             }else{

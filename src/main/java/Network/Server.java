@@ -1,5 +1,6 @@
 package Network;
 
+import Dice.Dice;
 import FortuneCards.Skulls;
 import FortuneCards.TreasureChest;
 import Game.Game;
@@ -140,14 +141,14 @@ public class Server {
                             for(int j = 0; j < 3; j++) {
                                 players[j].sendToClient("It is Player " + playerObjectList[i].getId() + "'s turn.");
                                 if(j+1 == playerObjectList[i].getId())
-                                    players[j].sendToClient(game.drawFortuneForPlayer(playerObjectList[i]));
+                                    players[j].sendToClient(game.drawFortuneForPlayer(playerObjectList[i], new Skulls(2)));
 
                             }
 
                             game.getScorer().setFortune(playerObjectList[i].getFortune());
                             playerObjectList[i].getHand().initialize();
                             game.getScorer().setAlive(playerObjectList[i].isAlive());
-
+                            playerObjectList[i].getHand().setOnSkullIsland(playerObjectList[i].getFortune());
                             //Main Game Loop
                             while(true){
 
@@ -159,7 +160,10 @@ public class Server {
                                     players[i].sendToClient("Player " + playerObjectList[i].getId() + "'s hand = " + playerObjectList[i].getHand().toString());
                                 }
 
-                                if(!playerObjectList[i].isAlive()){
+                                if(playerObjectList[i].getHand().isOnSkullIsland()) {
+                                    System.out.println("Player " + playerObjectList[i].getId() + " is in Skull Island.");
+                                    players[i].sendToClient("Player " + playerObjectList[i].getId() + " is in Skull Island.");
+                                }else if(!playerObjectList[i].isAlive()){
                                     System.out.println("Player " + playerObjectList[i].getId() + " has died.");
                                     players[i].sendToClient("Player " + playerObjectList[i].getId() + " has died.");
                                     game.getScorer().setAlive(false);
@@ -185,9 +189,35 @@ public class Server {
                                         int[] temp = new int [input.length()];
                                         for(int k = 0; k < temp.length; k++)
                                             temp[k] = Integer.parseInt(input, k, k+1,10);
+
+                                        int sizeofprevhand = 0;
+                                        for(Dice p : playerObjectList[i].getHand().getHand()) {
+                                            if(p != null)
+                                                sizeofprevhand++;
+                                        }
+
                                         String rollTemp = game.rollDiceForPlayer(playerObjectList[i], temp);
                                         System.out.println(rollTemp);
                                         players[i].sendToClient(rollTemp);
+
+                                        int sizeofcurrhand = 0;
+                                        for(Dice p : playerObjectList[i].getHand().getHand()) {
+                                            if(p != null)
+                                                sizeofcurrhand++;
+                                        }
+
+                                        if(sizeofprevhand-sizeofcurrhand < 1){
+                                            if(playerObjectList[i].getHand().isOnSkullIsland()){
+                                                for(int j = 0; j < 3; j++) {
+                                                    if(j+1 != playerObjectList[i].getId())
+                                                        playerObjectList[j].setTotal(playerObjectList[j].getTotal() - playerObjectList[i].getHand().getDeduction(playerObjectList[i].getFortune()));
+
+                                                }
+                                                players[i].sendToClient("Player " + playerObjectList[i].getId() + " has died.");
+                                                endTurn = true;
+                                            }
+                                        }
+
                                         break;
                                     case 2:
                                         String skullTemp = game.rollSkullForPlayer(playerObjectList[i]);
@@ -214,6 +244,17 @@ public class Server {
                                         players[i].sendToClient(chestRemoveTemp);
                                         break;
                                     case 5:
+                                        if(playerObjectList[i].getHand().isOnSkullIsland()){
+                                            for(int j = 0; j < 3; j++) {
+                                                if(j+1 != playerObjectList[i].getId())
+                                                    playerObjectList[j].setTotal(playerObjectList[j].getTotal() - playerObjectList[i].getHand().getDeduction(playerObjectList[i].getFortune()));
+
+                                            }
+                                            System.out.println("Player " + playerObjectList[i].getId() + " has died.");
+                                            players[i].sendToClient("Player " + playerObjectList[i].getId() + " has died.");
+                                            endTurn = true;
+                                            break;
+                                        }
                                         System.out.println("Player " + playerObjectList[i].getId() + "'s turn ended.");
                                         players[i].sendToClient("Player " + playerObjectList[i].getId() + "'s turn ended.");
                                         playerObjectList[i].setTotal((playerObjectList[i].getScore() + playerObjectList[i].getTotal()) < 0 ? 0 : (playerObjectList[i].getScore() + playerObjectList[i].getTotal()));
