@@ -141,7 +141,7 @@ public class Server {
                             for(int j = 0; j < 3; j++) {
                                 players[j].sendToClient("It is Player " + playerObjectList[i].getId() + "'s turn.");
                                 if(j+1 == playerObjectList[i].getId())
-                                    players[j].sendToClient(game.drawFortuneForPlayer(playerObjectList[i], new Skulls(2)));
+                                    players[j].sendToClient(game.drawFortuneForPlayer(playerObjectList[i]));
 
                             }
 
